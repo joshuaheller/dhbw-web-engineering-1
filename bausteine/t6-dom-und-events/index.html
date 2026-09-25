@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DOM und Events</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Die Seite reagiert</h1>
+    <p>Kein Reload, kein Framework. Nur <code>querySelector</code>, <code>addEventListener</code> und ein bisschen DOM.</p>
+
+    <form id="formular">
+      <label for="halt">Haltestelle</label>
+      <input id="halt" name="halt" type="text" required minlength="3" placeholder="mindestens 3 Zeichen">
+      <button type="submit">Hinzufügen</button>
+    </form>
+
+    <p id="status" role="status"></p>
+
+    <ul id="liste" aria-live="polite"></ul>
+
+    <button id="leeren" type="button" class="sekundaer">Liste leeren</button>
+  </main>
+</body>
+</html>

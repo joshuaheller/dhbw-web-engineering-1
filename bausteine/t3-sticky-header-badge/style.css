@@ -1,0 +1,41 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; line-height: 1.5; color: #1f1f1f; margin: 0; }
+
+header {
+  position: sticky;      /* ohne top: 0 passiert hier nichts */
+  top: 0;
+  z-index: 10;           /* wirkt nur, weil das Element positioniert ist */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: .75rem 1rem;
+  background: #fff;
+  border-bottom: 1px solid #dcdff2;
+}
+header nav { display: flex; gap: 1rem; }
+header a { color: #0000ff; }
+
+main { max-width: 42rem; margin-inline: auto; padding: 1rem; }
+
+.karte {
+  position: relative;    /* Bezugspunkt für das Badge */
+  background: #eef0fb;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+.karte h2 { margin: 0 0 .25rem; font-size: 1.1rem; }
+.karte p { margin: 0; color: #555; }
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #0000ff;
+  color: #fff;
+  font-size: .8rem;
+  padding: .2rem .6rem;
+  border-radius: 999px;
+}
+code { font-family: ui-monospace, Menlo, monospace; }

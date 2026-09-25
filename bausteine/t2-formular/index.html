@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formular ohne JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Formular, das sich selbst prüft</h1>
+    <p>Keine Zeile JavaScript. Der Browser übernimmt Tastatur, Prüfung und Fehlermeldung.</p>
+
+    <form action="ergebnis.html" method="get">
+      <p>
+        <label for="halt">Haltestelle</label>
+        <input id="halt" name="halt" type="text" required minlength="3"
+               placeholder="z. B. Kronenplatz" autocomplete="off">
+      </p>
+
+      <p>
+        <label for="mail">E-Mail für Benachrichtigungen</label>
+        <input id="mail" name="mail" type="email" placeholder="du@example.de">
+      </p>
+
+      <p>
+        <label for="minuten">Vorlaufzeit in Minuten</label>
+        <input id="minuten" name="minuten" type="number" min="0" max="60" step="5" value="5">
+      </p>
+
+      <fieldset>
+        <legend>Verkehrsmittel</legend>
+        <label><input type="checkbox" name="mittel" value="bahn" checked> Bahn</label>
+        <label><input type="checkbox" name="mittel" value="bus"> Bus</label>
+      </fieldset>
+
+      <p>
+        <label for="art">Anzeige</label>
+        <select id="art" name="art">
+          <option value="liste">Liste</option>
+          <option value="tabelle">Tabelle</option>
+        </select>
+      </p>
+
+      <button type="submit">Suchen</button>
+    </form>
+
+    <p class="hinweis">
+      Abschicken hängt die Eingaben an die URL: <code>ergebnis.html?halt=…&amp;mail=…</code><br>
+      Genau das meint <code>method="get"</code> – und genau dafür ist das <code>name</code>-Attribut da.
+    </p>
+  </main>
+</body>
+</html>

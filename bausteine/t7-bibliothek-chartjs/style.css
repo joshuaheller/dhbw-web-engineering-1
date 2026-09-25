@@ -1,0 +1,5 @@
+body { font-family: system-ui, sans-serif; line-height: 1.5; color: #1f1f1f; margin: 0; }
+main { max-width: 42rem; margin-inline: auto; padding: 2rem 1rem; }
+canvas { background: #eef0fb; border-radius: 12px; padding: .5rem; }
+#status { font-weight: 600; min-height: 1.6rem; }
+code { font-family: ui-monospace, Menlo, monospace; }

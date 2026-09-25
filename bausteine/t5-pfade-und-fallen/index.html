@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pfade: was lokal läuft und live nicht</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Vier Pfade, zwei davon brechen beim Deployen</h1>
+    <p>Zwei der vier Bilder fehlen schon hier – und genau die sind es, die nach dem Hochladen auf GitHub Pages auch dort fehlen. Öffnet das Network-Panel und schaut euch an, welcher Pfad jeweils angefragt wurde.</p>
+
+    <section class="galerie">
+      <figure>
+        <img src="img/logo.svg" alt="Logo, relativ geladen" width="120" height="60">
+        <figcaption><code>src="img/logo.svg"</code><br><b class="ok">funktioniert überall</b></figcaption>
+      </figure>
+
+      <figure>
+        <img src="./img/logo.svg" alt="Logo, explizit relativ" width="120" height="60">
+        <figcaption><code>src="./img/logo.svg"</code><br><b class="ok">dasselbe, nur deutlicher</b></figcaption>
+      </figure>
+
+      <figure>
+        <img src="/img/logo.svg" alt="Logo, ab Domain-Wurzel" width="120" height="60">
+        <figcaption><code>src="/img/logo.svg"</code><br><b class="warn">bricht unter /repo/</b></figcaption>
+      </figure>
+
+      <figure>
+        <img src="img/Logo.svg" alt="Logo, falsche Großschreibung" width="120" height="60">
+        <figcaption><code>src="img/Logo.svg"</code><br><b class="warn">bricht auf Linux-Servern</b></figcaption>
+      </figure>
+    </section>
+
+    <h2>Und aus einem Unterordner?</h2>
+    <p><a href="unterordner/seite.html">unterordner/seite.html öffnen</a> – dort zeigt dasselbe <code>img/logo.svg</code> ins Leere.</p>
+
+    <h2>So findet ihr es vor dem Deployen</h2>
+    <ol>
+      <li>DevTools → <strong>Network</strong> → Seite neu laden</li>
+      <li>Nach roten Zeilen suchen: Status <code>404</code></li>
+      <li>Die Spalte <em>Name</em> zeigt, welcher Pfad wirklich angefragt wurde</li>
+    </ol>
+  </main>
+</body>
+</html>

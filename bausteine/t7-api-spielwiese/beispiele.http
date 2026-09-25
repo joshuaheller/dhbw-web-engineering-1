@@ -1,0 +1,23 @@
+### Wetter (ohne Key, CORS erlaubt)
+GET https://api.open-meteo.com/v1/forecast?latitude=49.0094&longitude=8.4044&current=temperature_2m,wind_speed_10m
+
+### Ortssuche (liefert latitude/longitude für die Wetter-API)
+GET https://geocoding-api.open-meteo.com/v1/search?name=Karlsruhe&count=3&language=de
+
+### Abfahrten Bahn und Nahverkehr – erst Haltestelle suchen
+GET https://v6.db.transport.rest/locations?query=Karlsruhe%20Kronenplatz&results=3
+
+### … dann Abfahrten zu einer Haltestellen-ID
+GET https://v6.db.transport.rest/stops/8079041/departures?duration=30
+
+### Bücher
+GET https://openlibrary.org/search.json?q=web+engineering&limit=5
+
+### Quizfragen
+GET https://opentdb.com/api.php?amount=5&category=18&type=multiple
+
+### GitHub – Limit beachten: 60 Anfragen pro Stunde ohne Anmeldung
+GET https://api.github.com/repos/vitejs/vite/releases?per_page=3
+
+### Weltraumbild des Tages – DEMO_KEY hat ein sehr kleines Limit
+GET https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY

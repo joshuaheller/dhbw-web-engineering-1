@@ -1,0 +1,12 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; line-height: 1.5; color: #1f1f1f; margin: 0; }
+main { max-width: 42rem; margin-inline: auto; padding: 2rem 1rem; }
+label { display: block; font-weight: 600; margin-bottom: .25rem; }
+input, select { font: inherit; padding: .5rem; border: 1px solid #aab; border-radius: 8px; width: 100%; max-width: 22rem; }
+input:invalid:not(:placeholder-shown) { border-color: #c00; }
+fieldset { border: 1px solid #ccd; border-radius: 8px; padding: .75rem 1rem; }
+fieldset label { font-weight: 400; display: inline-flex; gap: .4rem; align-items: center; margin-right: 1rem; }
+button { font: inherit; padding: .6rem 1.2rem; border: 0; border-radius: 8px; background: #0000ff; color: #fff; cursor: pointer; }
+button:hover { background: #0000cc; }
+.hinweis { background: #eef0fb; padding: 1rem; border-radius: 12px; font-size: .95rem; }
+code { font-family: ui-monospace, Menlo, monospace; }

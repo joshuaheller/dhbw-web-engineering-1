@@ -1,0 +1,23 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; line-height: 1.5; color: #1f1f1f; margin: 0; }
+main { max-width: 60rem; margin-inline: auto; padding: 2rem 1rem; }
+.notiz { font-size: .9rem; color: #555; }
+
+.karten { display: grid; gap: 1rem; margin-bottom: 2rem; }
+.karten article { background: #eef0fb; border-radius: 12px; padding: 1rem 1.25rem; }
+.karten h3 { margin: 0 0 .25rem; font-size: 1.05rem; }
+.karten p { margin: 0; color: #555; }
+
+/* Variante 1: so viele Spalten, wie passen */
+.auto { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+/* Variante 2: mobile first mit festen Stufen */
+.breakpoints { grid-template-columns: 1fr; }
+
+@media (min-width: 640px) {
+  .breakpoints { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+  .breakpoints { grid-template-columns: repeat(3, 1fr); }
+}

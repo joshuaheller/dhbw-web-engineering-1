@@ -1,0 +1,8 @@
+body { font-family: system-ui, sans-serif; line-height: 1.5; color: #1f1f1f; margin: 0; }
+main { max-width: 48rem; margin-inline: auto; padding: 2rem 1rem; }
+.galerie { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+figure { margin: 0; background: #eef0fb; border-radius: 12px; padding: 1rem; }
+figcaption { font-size: .85rem; margin-top: .5rem; }
+code { font-family: ui-monospace, Menlo, monospace; }
+.ok { color: #0a7a3d; }
+.warn { color: #b00020; }

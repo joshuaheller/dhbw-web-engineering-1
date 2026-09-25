@@ -1,0 +1,50 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; line-height: 1.5; color: #1f1f1f; margin: 0; }
+main { max-width: 48rem; margin-inline: auto; padding: 2rem 1rem; }
+code { font-family: ui-monospace, Menlo, monospace; }
+.notiz { font-size: .9rem; color: #555; }
+
+/* ---- Flexbox: eine Achse ---- */
+.flex-demo {
+  display: flex;
+  flex-direction: row;          /* row | column */
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: #eef0fb;
+  padding: 1rem;
+  border-radius: 12px;
+}
+.flex-demo > div { background: #0000ff; color: #fff; padding: .75rem 1rem; border-radius: 8px; }
+.flex-demo .waechst { flex: 1; }   /* nimmt den Restplatz */
+
+/* ---- Grid: zwei Achsen ---- */
+.grid-demo {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  grid-template-areas:
+    "kopf   kopf"
+    "seite  inhalt"
+    "fuss   fuss";
+  gap: .75rem;
+  background: #eef0fb;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: .5rem;
+}
+.kopf   { grid-area: kopf; }
+.seite  { grid-area: seite; }
+.inhalt { grid-area: inhalt; }
+.fuss   { grid-area: fuss; }
+.grid-demo > div { background: #dcdff2; padding: 1rem; border-radius: 8px; text-align: center; }
+
+/* ---- Zentrieren ---- */
+.zentriert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8rem;
+  background: #dcdff2;
+  border-radius: 12px;
+}

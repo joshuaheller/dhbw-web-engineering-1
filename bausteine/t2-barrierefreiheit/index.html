@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barrierefreiheit: vorher / nachher</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Vier Fehler und ihre Korrektur</h1>
+    <p>Probiert jede Karte einmal nur mit <kbd>Tab</kbd> und <kbd>Enter</kbd> – ohne Maus.</p>
+
+    <section class="karten">
+      <article class="karte schlecht">
+        <h2>Vorher</h2>
+
+        <div class="btn" onclick="alert('geklickt')">Senden</div>
+
+        <img src="bild.svg" width="120" height="60">
+
+        <p class="grau">Wichtiger Hinweis in Hellgrau</p>
+
+        <div class="feld">
+          <span>E-Mail</span>
+          <input type="text">
+        </div>
+      </article>
+
+      <article class="karte gut">
+        <h2>Nachher</h2>
+
+        <button type="button" onclick="alert('geklickt')">Senden</button>
+
+        <img src="bild.svg" width="120" height="60" alt="Logo der Beispielhaltestelle">
+
+        <p>Wichtiger Hinweis in lesbarem Kontrast</p>
+
+        <div class="feld">
+          <label for="mail">E-Mail</label>
+          <input id="mail" type="email">
+        </div>
+      </article>
+    </section>
+
+    <h2>Was ihr gerade gesehen habt</h2>
+    <ol>
+      <li>Ein <code>div</code> mit <code>onclick</code> ist kein Button: kein Tab-Fokus, kein Enter, keine Ansage.</li>
+      <li>Ein Bild ohne <code>alt</code> ist für einen Screenreader eine Leerstelle.</li>
+      <li>Hellgrau auf Weiß liegt unter 4,5:1 Kontrast und fällt durch jede Prüfung.</li>
+      <li>Ein <code>span</code> neben einem Feld ist kein <code>label</code> – der Klick auf den Text tut nichts.</li>
+    </ol>
+  </main>
+</body>
+</html>

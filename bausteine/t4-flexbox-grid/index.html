@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flexbox und Grid nebeneinander</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Eine Richtung oder zwei</h1>
+
+    <h2>Flexbox: eine Reihe verteilen</h2>
+    <div class="flex-demo">
+      <div>1</div><div>2</div><div class="waechst">3 – flex: 1</div><div>4</div>
+    </div>
+    <p class="notiz"><code>justify-content</code> verteilt auf der Hauptachse, <code>align-items</code> richtet auf der Querachse aus, <code>gap</code> ersetzt margin.</p>
+
+    <h2>Grid: ein Raster aufspannen</h2>
+    <div class="grid-demo">
+      <div class="kopf">header</div>
+      <div class="seite">nav</div>
+      <div class="inhalt">main</div>
+      <div class="fuss">footer</div>
+    </div>
+    <p class="notiz">Hier steht das Layout als Bild im Code – siehe <code>grid-template-areas</code> in der CSS-Datei.</p>
+
+    <h2>Zentrieren, die kurze Fassung</h2>
+    <div class="zentriert">
+      <span>genau in der Mitte</span>
+    </div>
+  </main>
+</body>
+</html>

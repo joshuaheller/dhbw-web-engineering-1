@@ -1,0 +1,41 @@
+/* Alles an einer Stelle einstellbar – ab Termin 3 füllt ihr das hier aus. */
+:root {
+  --bg: #ffffff;
+  --text: #1f1f1f;
+  --akzent: #0000ff;
+  --flaeche: #eef0fb;
+  --radius: 12px;
+  --abstand: 1rem;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+
+main {
+  max-width: 65ch;
+  margin-inline: auto;
+  padding: var(--abstand);
+}
+
+nav {
+  display: flex;
+  gap: var(--abstand);
+  padding: var(--abstand);
+  background: var(--flaeche);
+}
+
+a { color: var(--akzent); }
+
+footer {
+  padding: var(--abstand);
+  font-size: .875rem;
+  color: #555;
+}

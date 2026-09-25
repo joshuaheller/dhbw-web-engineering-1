@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zustand und Render</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Ein Ort für die Wahrheit</h1>
+    <p>Dieselbe Liste wie im Baustein davor – aber alle Daten stehen in <b>einem</b> Objekt, und <b>eine</b> Funktion baut daraus die Anzeige.</p>
+
+    <form id="formular">
+      <label for="halt">Haltestelle</label>
+      <input id="halt" type="text" required minlength="3">
+      <button type="submit">Hinzufügen</button>
+    </form>
+
+    <div class="filter">
+      <label><input type="radio" name="filter" value="alle" checked> alle</label>
+      <label><input type="radio" name="filter" value="favoriten"> nur Favoriten</label>
+    </div>
+
+    <p id="status" role="status"></p>
+    <ul id="liste" aria-live="polite"></ul>
+  </main>
+</body>
+</html>

@@ -1,0 +1,11 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; line-height: 1.5; color: #1f1f1f; margin: 0; }
+main { max-width: 36rem; margin-inline: auto; padding: 2rem 1rem; }
+form { display: flex; gap: .5rem; align-items: flex-end; flex-wrap: wrap; }
+label { display: block; font-weight: 600; margin-bottom: .25rem; }
+input { font: inherit; padding: .5rem; border: 1px solid #aab; border-radius: 8px; }
+button { font: inherit; padding: .55rem 1rem; border: 0; border-radius: 8px; background: #0000ff; color: #fff; cursor: pointer; }
+ul { list-style: none; padding: 0; display: grid; gap: .5rem; }
+li { background: #eef0fb; border-radius: 10px; padding: .5rem .75rem; }
+#zaehler { font-weight: 600; }
+.notiz { background: #eef0fb; padding: 1rem; border-radius: 12px; font-size: .95rem; }

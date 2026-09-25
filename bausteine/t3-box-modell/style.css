@@ -1,0 +1,21 @@
+body { font-family: system-ui, sans-serif; line-height: 1.5; color: #1f1f1f; margin: 0; }
+main { max-width: 48rem; margin-inline: auto; padding: 2rem 1rem; }
+code, b { font-family: ui-monospace, Menlo, monospace; }
+
+.messlatte { width: 300px; border-top: 2px solid #0000ff; margin-bottom: .25rem; }
+.messlatte span { font-size: .75rem; color: #0000ff; }
+
+.box { width: 300px; padding: 20px; border: 5px solid #0000ff; background: #eef0fb; margin-bottom: 1rem; }
+.content-box { box-sizing: content-box; }
+.border-box { box-sizing: border-box; }
+
+.abstaende { display: flex; gap: 1rem; flex-wrap: wrap; }
+.a1, .a2 { background: #dcdff2; outline: 1px dashed #612ff8; }
+.a1 { padding: 8px 16px; }
+.a2 { padding: 8px 16px 24px 0; }
+
+.collapse { background: #f6f7fd; }
+.m { background: #dcdff2; margin: 0; }
+.m:first-child { margin-bottom: 40px; }
+.m:last-child { margin-top: 40px; }
+.notiz { font-size: .9rem; color: #555; }

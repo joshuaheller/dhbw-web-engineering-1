@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-Server</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.5; margin: 2rem; color: #1f1f1f; }
+    pre { background: #eef0fb; padding: 1rem; border-radius: 12px; overflow-x: auto; }
+    code { font-family: ui-monospace, Menlo, monospace; }
+  </style>
+</head>
+<body>
+  <h1>Diese Seite kommt vom Server</h1>
+  <p>Die Adresszeile zeigt <code>http://localhost:3000</code> – kein <code>file:///</code> mehr. Schaut ins Terminal: dort erscheint jede Anfrage.</p>
+  <p>Und hier die Antwort von <code>/api/abfahrten</code>:</p>
+  <pre id="ausgabe">lädt …</pre>
+
+  <script type="module">
+    const res = await fetch("/api/abfahrten");
+    const daten = await res.json();
+    document.querySelector("#ausgabe").textContent = JSON.stringify(daten, null, 2);
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eine Bibliothek einbinden</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Diagramm in zehn Zeilen</h1>
+    <p>Chart.js zeichnet auf ein <code>&lt;canvas&gt;</code>. Die Daten kommen von der Wetter-API – echte Werte, keine erfundenen.</p>
+
+    <p id="status" role="status">Lade …</p>
+    <canvas id="diagramm" height="140" aria-label="Temperaturverlauf der nächsten Stunden" role="img"></canvas>
+
+    <h2>Bevor ihr eine Bibliothek einbaut</h2>
+    <ul>
+      <li>Wie viele Downloads pro Woche? Wann war der letzte Commit?</li>
+      <li>Wie groß ist sie? (<a href="https://bundlephobia.com">bundlephobia.com</a>)</li>
+      <li>Welche Lizenz?</li>
+      <li>Geht es auch ohne? Ein Balkendiagramm aus vier <code>div</code>s ist manchmal die bessere Antwort.</li>
+    </ul>
+  </main>
+</body>
+</html>

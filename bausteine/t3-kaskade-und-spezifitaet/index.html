@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kaskade und Spezifität</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Welche Regel gewinnt?</h1>
+    <p>Jede Zeile unten wird von mehreren Regeln getroffen. Ratet die Farbe, bevor ihr nachschaut.</p>
+
+    <nav id="start" aria-label="Beispielmenü">
+      <a href="#a" class="aktiv">Link A – Klasse .aktiv</a>
+      <a href="#b">Link B – nur nav a</a>
+    </nav>
+
+    <p class="hinweis wichtig">Absatz mit zwei Klassen: .hinweis und .wichtig</p>
+    <p class="hinweis" id="einzel">Absatz mit Klasse und ID</p>
+    <p style="color: green">Absatz mit style-Attribut direkt am Element</p>
+    <p class="ueberschrieben">Absatz, bei dem !important zuschlägt</p>
+  </main>
+
+  <aside>
+    <h2>So prüft ihr es</h2>
+    <ol>
+      <li>Rechtsklick auf eine Zeile → <strong>Untersuchen</strong></li>
+      <li>Reiter <strong>Styles</strong>: alle Regeln stehen untereinander</li>
+      <li>Durchgestrichen = überschrieben. Ganz oben steht die Regel, die gewonnen hat</li>
+      <li>Reiter <strong>Computed</strong>: der Endwert nach allen Regeln</li>
+    </ol>
+  </aside>
+</body>
+</html>

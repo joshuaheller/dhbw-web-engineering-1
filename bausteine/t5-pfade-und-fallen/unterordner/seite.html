@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Seite im Unterordner</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <main>
+    <h1>Eine Ebene tiefer</h1>
+    <p>Dieses Bild benutzt <code>src="img/logo.svg"</code> – relativ zu <em>dieser</em> Datei, also zu <code>unterordner/</code>:</p>
+    <img src="img/logo.svg" alt="Kaputt, weil der Pfad relativ zur Seite gilt" width="120" height="60">
+    <p>Richtig wäre <code>src="../img/logo.svg"</code>:</p>
+    <img src="../img/logo.svg" alt="Logo" width="120" height="60">
+    <p><a href="../index.html">Zurück</a></p>
+  </main>
+</body>
+</html>

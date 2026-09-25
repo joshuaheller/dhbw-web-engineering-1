@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsive ohne Media Query</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Karten, die sich selbst umbrechen</h1>
+    <p>Zieht das Browserfenster schmal. Das obere Raster kommt ohne eine einzige Media Query aus.</p>
+
+    <h2>auto-fit + minmax</h2>
+    <div class="karten auto">
+      <article><h3>Abfahrten</h3><p>Live-Daten der nächsten Bahnen.</p></article>
+      <article><h3>Favoriten</h3><p>Haltestellen, die ihr oft braucht.</p></article>
+      <article><h3>Karte</h3><p>Wo ist die Haltestelle?</p></article>
+      <article><h3>Einstellungen</h3><p>Vorlaufzeit und Verkehrsmittel.</p></article>
+    </div>
+
+    <h2>Mit Media Query, mobile first</h2>
+    <div class="karten breakpoints">
+      <article><h3>Eins</h3><p>Handy: eine Spalte.</p></article>
+      <article><h3>Zwei</h3><p>Ab 640 px: zwei Spalten.</p></article>
+      <article><h3>Drei</h3><p>Ab 1024 px: drei Spalten.</p></article>
+    </div>
+
+    <p class="notiz">Beides ist richtig. Die erste Variante ist kürzer, die zweite gibt euch die Kontrolle über die genauen Stufen.</p>
+  </main>
+</body>
+</html>

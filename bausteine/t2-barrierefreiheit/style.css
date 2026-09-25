@@ -1,0 +1,16 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; line-height: 1.5; color: #1f1f1f; margin: 0; }
+main { max-width: 52rem; margin-inline: auto; padding: 2rem 1rem; }
+.karten { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.karte { flex: 1 1 300px; border-radius: 12px; padding: 1rem 1.25rem; background: #f6f7fd; }
+.karte.gut { background: #eef0fb; }
+.karte h2 { margin-top: 0; font-size: 1rem; letter-spacing: .06em; text-transform: uppercase; color: #0000ff; }
+.btn { display: inline-block; background: #0000ff; color: #fff; padding: .6rem 1.2rem; border-radius: 8px; cursor: pointer; }
+button { font: inherit; background: #0000ff; color: #fff; padding: .6rem 1.2rem; border: 0; border-radius: 8px; cursor: pointer; }
+.grau { color: #c9c9c9; }
+.feld { margin-top: 1rem; }
+.feld input { font: inherit; padding: .45rem; border: 1px solid #aab; border-radius: 8px; width: 100%; }
+label, .feld span { display: block; font-weight: 600; margin-bottom: .25rem; }
+img { display: block; margin: 1rem 0; }
+kbd { font-family: ui-monospace, Menlo, monospace; background: #eef0fb; padding: .1rem .35rem; border-radius: 4px; }
+code { font-family: ui-monospace, Menlo, monospace; }

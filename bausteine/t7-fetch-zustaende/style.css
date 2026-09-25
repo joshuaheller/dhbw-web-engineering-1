@@ -1,0 +1,16 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; line-height: 1.5; color: #1f1f1f; margin: 0; }
+main { max-width: 36rem; margin-inline: auto; padding: 2rem 1rem; }
+form { display: flex; gap: .5rem; align-items: flex-end; flex-wrap: wrap; }
+label { display: block; font-weight: 600; margin-bottom: .25rem; }
+input { font: inherit; padding: .5rem; border: 1px solid #aab; border-radius: 8px; }
+button { font: inherit; padding: .55rem 1rem; border: 0; border-radius: 8px; background: #0000ff; color: #fff; cursor: pointer; }
+button.sekundaer { background: #dcdff2; color: #1f1f1f; font-size: .9rem; padding: .4rem .8rem; }
+.testknoepfe { display: flex; gap: .5rem; flex-wrap: wrap; margin: 1rem 0; }
+#status { min-height: 1.6rem; font-weight: 600; }
+#status.laedt { color: #555; }
+#status.ok { color: #0a7a3d; }
+#status.leer { color: #8a6d00; }
+#status.fehler { color: #b00020; }
+ul { list-style: none; padding: 0; display: grid; gap: .5rem; }
+li { display: flex; justify-content: space-between; background: #eef0fb; border-radius: 10px; padding: .5rem .75rem; }

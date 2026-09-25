@@ -1,0 +1,30 @@
+/* Reihenfolge und Gewicht entscheiden. Lest von oben nach unten und rechnet mit. */
+
+body { font-family: system-ui, sans-serif; line-height: 1.6; color: #1f1f1f; margin: 0; }
+main, aside { max-width: 46rem; margin-inline: auto; padding: 1rem; }
+aside { background: #eef0fb; border-radius: 12px; margin-bottom: 2rem; }
+
+/* 0-0-2 */
+nav a { color: #444444; display: block; padding: .25rem 0; }
+
+/* 0-1-0 – trifft Link A, verliert aber gegen 0-1-2 weiter unten */
+.aktiv { color: crimson; }
+
+/* 0-1-2 – gewinnt bei Link A */
+nav a.aktiv { color: #0000ff; font-weight: 700; }
+
+/* 0-1-0 */
+.hinweis { color: #666666; }
+
+/* 0-2-0 – zwei Klassen schlagen eine */
+.hinweis.wichtig { color: darkorange; }
+
+/* 1-0-0 – eine ID schlägt jede Zahl von Klassen */
+#einzel { color: purple; }
+
+/* verliert gegen das style-Attribut am Element */
+p { color: #1f1f1f; }
+
+/* schlägt sogar das style-Attribut – und ist fast immer ein Warnsignal */
+.ueberschrieben { color: teal !important; }
+p.ueberschrieben { color: black; }

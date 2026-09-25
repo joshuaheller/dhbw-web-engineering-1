@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Semantisches Grundgerüst</title>
+  <meta name="description" content="Dieselbe Seite zweimal: einmal als div-Suppe, einmal semantisch.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Dieselbe Seite, zwei Bauweisen</h1>
+  <p>Beide Kästen sehen gleich aus. Schaut euch den Quelltext an – und dann die Gliederung in den DevTools.</p>
+
+  <section class="vergleich">
+    <article class="spalte">
+      <h2>So nicht: div-Suppe</h2>
+      <div class="demo">
+        <div class="header">
+          <div class="nav">
+            <div class="link">Start</div>
+            <div class="link">Abfahrten</div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="title">Abfahrten Kronenplatz</div>
+          <div class="text">Nächste Bahn in 4 Minuten.</div>
+        </div>
+        <div class="footer">Stand: heute</div>
+      </div>
+    </article>
+
+    <article class="spalte">
+      <h2>So: semantisch</h2>
+      <div class="demo">
+        <header>
+          <nav aria-label="Beispielmenü">
+            <a href="#start">Start</a>
+            <a href="#abfahrten">Abfahrten</a>
+          </nav>
+        </header>
+        <main id="abfahrten">
+          <h3>Abfahrten Kronenplatz</h3>
+          <p>Nächste Bahn in <time datetime="PT4M">4 Minuten</time>.</p>
+        </main>
+        <footer>Stand: heute</footer>
+      </div>
+    </article>
+  </section>
+
+</body>
+</html>

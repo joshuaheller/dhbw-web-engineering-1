@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fehlersuche: fünf eingebaute Fehler</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Fünf Fehler, eine Konsole</h1>
+    <p>Diese Seite soll eine Haltestelle aufnehmen, sie in der Liste zeigen und den Zähler aktualisieren. Sie tut nichts davon richtig.</p>
+
+    <form id="formular">
+      <label for="halt">Haltestelle</label>
+      <input id="halt" type="text" required minlength="3">
+      <button type="submit">Hinzufügen</button>
+    </form>
+
+    <p id="zaehler">0 Haltestellen</p>
+    <ul id="liste"></ul>
+
+    <p class="notiz">
+      Nicht raten: DevTools öffnen, Konsole lesen, Zeile für Zeile.
+      Jeder Fehler hinterlässt eine Spur – vier in der Konsole, einer nur im Verhalten.
+    </p>
+  </main>
+</body>
+</html>

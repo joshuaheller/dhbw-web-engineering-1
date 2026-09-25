@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laden, Anzeigen, Fehler</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Drei Zustände, nicht einer</h1>
+    <p>Eine Seite, die Daten holt, hat immer drei Zustände: sie lädt, sie hat Daten, oder es ist etwas schiefgegangen. Alle drei müssen sichtbar sein.</p>
+
+    <form id="formular">
+      <label for="ort">Ort</label>
+      <input id="ort" type="text" value="Karlsruhe" required>
+      <button type="submit">Wetter laden</button>
+    </form>
+
+    <div class="testknoepfe">
+      <button type="button" data-fall="langsam" class="sekundaer">langsame Verbindung</button>
+      <button type="button" data-fall="fehler" class="sekundaer">Server antwortet mit 500</button>
+      <button type="button" data-fall="leer" class="sekundaer">keine Treffer</button>
+    </div>
+
+    <p id="status" role="status"></p>
+    <ul id="ergebnis" aria-live="polite"></ul>
+  </main>
+</body>
+</html>

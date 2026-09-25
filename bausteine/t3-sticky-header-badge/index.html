@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sticky Header und Badge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <strong>Abfahrtsmonitor</strong>
+    <nav aria-label="Hauptmenü">
+      <a href="#liste">Liste</a>
+      <a href="#info">Info</a>
+    </nav>
+  </header>
+
+  <main id="liste">
+    <h1>Scrollt mal nach unten</h1>
+    <p>Der Header bleibt oben kleben, die Badges kleben in der Ecke ihrer Karte. Zwei Zeilen CSS pro Effekt.</p>
+
+    <div class="karte">
+      <span class="badge">in 4 min</span>
+      <h2>S1 → Bad Herrenalb</h2>
+      <p>Gleis 2, barrierefrei</p>
+    </div>
+    <div class="karte">
+      <span class="badge">in 9 min</span>
+      <h2>S2 → Rheinstetten</h2>
+      <p>Gleis 1</p>
+    </div>
+    <div class="karte">
+      <span class="badge">in 14 min</span>
+      <h2>Bus 10 → Oberreut</h2>
+      <p>Haltestelle B</p>
+    </div>
+    <div class="karte">
+      <span class="badge">in 21 min</span>
+      <h2>S11 → Ittersbach</h2>
+      <p>Gleis 3</p>
+    </div>
+    <div class="karte">
+      <span class="badge">in 26 min</span>
+      <h2>Tram 3 → Rintheim</h2>
+      <p>Haltestelle A</p>
+    </div>
+    <div class="karte">
+      <span class="badge">in 31 min</span>
+      <h2>S4 → Heilbronn</h2>
+      <p>Gleis 2</p>
+    </div>
+
+    <h2 id="info">Warum das funktioniert</h2>
+    <p><code>position: sticky</code> lässt ein Element mitscrollen, bis es an der angegebenen Kante anstößt – danach bleibt es stehen. Ohne <code>top</code> passiert nichts.</p>
+    <p>Beim Badge ist die Karte der Bezugspunkt: <code>position: relative</code> am Elternteil, <code>position: absolute</code> am Kind. Dieses Paar braucht ihr immer wieder.</p>
+  </main>
+</body>
+</html>

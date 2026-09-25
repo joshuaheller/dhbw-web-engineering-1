@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Box-Modell zum Anfassen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Zwei Boxen, gleiche Angaben, andere Breite</h1>
+    <p>Beide haben <code>width: 300px</code>, <code>padding: 20px</code> und <code>border: 5px</code>. Messt sie mit den DevTools nach.</p>
+
+    <div class="messlatte"><span>300 px</span></div>
+
+    <div class="box content-box">
+      <strong>box-sizing: content-box</strong> (Standard)<br>
+      300 + 2×20 + 2×5 = <b>350 px</b> breit
+    </div>
+
+    <div class="box border-box">
+      <strong>box-sizing: border-box</strong><br>
+      alles inklusive = <b>300 px</b> breit
+    </div>
+
+    <h2>Abstände im Uhrzeigersinn</h2>
+    <div class="abstaende">
+      <div class="a1">padding: 8px 16px</div>
+      <div class="a2">padding: 8px 16px 24px 0</div>
+    </div>
+
+    <h2>Und der Klassiker: margin fällt zusammen</h2>
+    <div class="collapse">
+      <p class="m">Absatz mit margin-bottom: 40px</p>
+      <p class="m">Absatz mit margin-top: 40px</p>
+    </div>
+    <p class="notiz">Der Abstand dazwischen ist 40 px, nicht 80. Zwei senkrechte margins verschmelzen zum größeren.</p>
+  </main>
+</body>
+</html>

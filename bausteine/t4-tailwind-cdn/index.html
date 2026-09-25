@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tailwind zum Ausprobieren</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-white text-slate-800">
+
+  <header class="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-slate-200 bg-white px-4 py-3">
+    <strong class="text-lg">Abfahrtsmonitor</strong>
+    <nav class="flex gap-4" aria-label="Hauptmenü">
+      <a class="text-blue-700 hover:underline" href="#liste">Liste</a>
+      <a class="text-blue-700 hover:underline" href="#info">Info</a>
+    </nav>
+  </header>
+
+  <main id="liste" class="mx-auto max-w-2xl p-4">
+    <h1 class="mb-2 text-3xl font-bold">Dieselbe Karte, andere Schreibweise</h1>
+    <p class="mb-6 text-slate-600">
+      Jede Klasse hier ist eine CSS-Eigenschaft mit kurzem Namen. <code class="rounded bg-slate-100 px-1">p-4</code>
+      ist <code class="rounded bg-slate-100 px-1">padding: 1rem</code>, mehr nicht.
+    </p>
+
+    <article class="relative mb-4 rounded-xl bg-slate-100 p-4 transition hover:bg-slate-200 md:p-6">
+      <span class="absolute right-2 top-2 rounded-full bg-blue-700 px-2 py-0.5 text-xs text-white">in 4 min</span>
+      <h2 class="text-lg font-semibold">S1 → Bad Herrenalb</h2>
+      <p class="text-slate-600">Gleis 2, barrierefrei</p>
+    </article>
+
+    <article class="relative mb-4 rounded-xl bg-slate-100 p-4 transition hover:bg-slate-200 md:p-6">
+      <span class="absolute right-2 top-2 rounded-full bg-blue-700 px-2 py-0.5 text-xs text-white">in 9 min</span>
+      <h2 class="text-lg font-semibold">S2 → Rheinstetten</h2>
+      <p class="text-slate-600">Gleis 1</p>
+    </article>
+
+    <div id="info" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-xl border border-slate-200 p-4">
+        <h3 class="font-semibold">grid gap-4</h3>
+        <p class="text-sm text-slate-600">Raster mit 1rem Abstand.</p>
+      </div>
+      <div class="rounded-xl border border-slate-200 p-4">
+        <h3 class="font-semibold">sm:grid-cols-2</h3>
+        <p class="text-sm text-slate-600">Ab 640 px zwei Spalten.</p>
+      </div>
+      <div class="rounded-xl border border-slate-200 p-4">
+        <h3 class="font-semibold">lg:grid-cols-3</h3>
+        <p class="text-sm text-slate-600">Ab 1024 px drei Spalten.</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

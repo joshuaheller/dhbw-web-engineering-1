@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tailwind mit Build</title>
+  <link rel="stylesheet" href="/src/style.css">
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body class="bg-white text-slate-800">
+  <main class="mx-auto max-w-xl p-6">
+    <h1 class="mb-2 text-3xl font-bold">Tailwind, gebaut statt nachgeladen</h1>
+    <p class="mb-6 text-slate-600">
+      Hier erzeugt Vite die CSS-Datei beim Start. Im Build landet nur das, was ihr wirklich benutzt.
+    </p>
+    <button id="knopf" class="rounded-lg bg-blue-700 px-4 py-2 text-white transition hover:bg-blue-800">
+      Klick mich
+    </button>
+    <p id="ausgabe" class="mt-4 text-slate-600" role="status"></p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,11 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; line-height: 1.5; margin: 2rem; color: #1f1f1f; }
+.vergleich { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: flex-start; }
+.spalte { flex: 1 1 320px; }
+.demo { border: 1px solid #ccd; border-radius: 12px; overflow: hidden; }
+.header, header { background: #eef0fb; padding: .75rem; }
+.nav, nav { display: flex; gap: 1rem; }
+.link, nav a { color: #0000ff; cursor: pointer; text-decoration: underline; }
+.content, main { padding: .75rem; }
+.title, main h3 { font-size: 1.125rem; font-weight: 700; margin: 0 0 .25rem; }
+.footer, footer { padding: .75rem; font-size: .875rem; color: #555; border-top: 1px solid #eee; }
