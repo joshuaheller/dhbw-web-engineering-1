@@ -16,25 +16,34 @@ KI ist in diesem Kurs erlaubt und erwünscht. Aber ein Feature, das niemand im T
 
 Jeder Termin bringt euer Projekt einen Schritt weiter. Die Übungsblätter sind keine Wegwerf-Aufgaben: was ihr in Blatt 3 baut, benutzt ihr in Blatt 7 wieder.
 
-| Termin | Datum | Thema | Blatt | Euer Projekt kann danach … |
-| --- | --- | --- | --- | --- |
-| 1 | 29.09. | Wie das Web funktioniert | [Blatt 1](blaetter/pdf/WE1_Blatt01_Setup-und-erster-Start.pdf) | Setup steht, Team und Idee stehen, erste Seite im Browser |
-| 2 | 06.10. | HTML5 richtig | [Blatt 2](blaetter/pdf/WE1_Blatt02_Das-Gerüst.pdf) | Seiten, Navigation, ein Formular – sauber ausgezeichnet |
-| 3 | 13.10. | CSS Grundlagen | [Blatt 3](blaetter/pdf/WE1_Blatt03_Eigenes-CSS.pdf) | Eigenes Stylesheet: Farben, Schrift, Abstände, sticky Header |
-| 4 | 20.10. | Layout, Tailwind & npm | [Blatt 4](blaetter/pdf/WE1_Blatt04_Layout-Tailwind-und-die-Toolchain.pdf) | Responsives Layout, drei wiederverwendete Komponenten |
-| 5 | 27.10. | Client, Server & HTTP | [Blatt 5](blaetter/pdf/WE1_Blatt05_Online-gehen.pdf) | Läuft live unter einer öffentlichen URL |
-| 6 | 17.11. | JavaScript im Browser | [Blatt 6](blaetter/pdf/WE1_Blatt06_Interaktiv-werden.pdf) | Reagiert auf Eingaben, ohne die Seite neu zu laden |
-| 7 | 24.11. | Daten & APIs | [Blatt 7](blaetter/pdf/WE1_Blatt07_Echte-Daten.pdf) | Holt echte Daten aus einer API, inklusive Fehlerfall |
-| 8 | 01.12. | Arbeitsalltag mit Agents | [Blatt 8](blaetter/pdf/WE1_Blatt08_Feinschliff-und-Abgabe.pdf) | Ist abgabefertig: README, KI-Log, saubere Historie |
-| 9 | 08.12. | Präsentationen & Abschluss | – | wird vorgeführt |
+| Termin | Datum | Thema | Folien | Blatt | Euer Projekt kann danach … |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 29.09. | Wie das Web funktioniert | [Folien 1](folien/WE1_Termin01_Kickoff.pdf) | [Blatt 1](blaetter/pdf/WE1_Blatt01_Setup-und-erster-Start.pdf) | Setup steht, Team und Idee stehen, erste Seite im Browser |
+| 2 | 06.10. | HTML5 richtig | [Folien 2](folien/WE1_Termin02_HTML5.pdf) | [Blatt 2](blaetter/pdf/WE1_Blatt02_Das-Gerüst.pdf) | Seiten, Navigation, ein Formular – sauber ausgezeichnet |
+| 3 | 13.10. | CSS Grundlagen | [Folien 3](folien/WE1_Termin03_CSS.pdf) | [Blatt 3](blaetter/pdf/WE1_Blatt03_Eigenes-CSS.pdf) | Eigenes Stylesheet: Farben, Schrift, Abstände, sticky Header |
+| 4 | 20.10. | Layout, Tailwind & npm | [Folien 4](folien/WE1_Termin04_Layout-Tailwind.pdf) | [Blatt 4](blaetter/pdf/WE1_Blatt04_Layout-Tailwind-und-die-Toolchain.pdf) | Responsives Layout, drei wiederverwendete Komponenten |
+| 5 | 27.10. | Client, Server & HTTP | folgt | [Blatt 5](blaetter/pdf/WE1_Blatt05_Online-gehen.pdf) | Läuft live unter einer öffentlichen URL |
+| 6 | 17.11. | JavaScript im Browser | folgt | [Blatt 6](blaetter/pdf/WE1_Blatt06_Interaktiv-werden.pdf) | Reagiert auf Eingaben, ohne die Seite neu zu laden |
+| 7 | 24.11. | Daten & APIs | folgt | [Blatt 7](blaetter/pdf/WE1_Blatt07_Echte-Daten.pdf) | Holt echte Daten aus einer API, inklusive Fehlerfall |
+| 8 | 01.12. | Arbeitsalltag mit Agents | folgt | [Blatt 8](blaetter/pdf/WE1_Blatt08_Feinschliff-und-Abgabe.pdf) | Ist abgabefertig: README, KI-Log, saubere Historie |
+| 9 | 08.12. | Präsentationen & Abschluss | folgt | – | wird vorgeführt |
 
 Die Blätter liegen als PDF in [`blaetter/pdf/`](blaetter/pdf) – das ist die Fassung, mit der ihr arbeitet.
+Die Folien kommen nach jedem Termin als PDF in [`folien/`](folien) dazu.
 
 ## Was hier sonst noch liegt
 
 - [`SETUP.md`](SETUP.md) – was ihr vor dem 06.10. installiert habt
 - [`bausteine/`](bausteine) – die Code-Beispiele aus den Terminen, jedes einzeln lauffähig
 - [`projekt-template/`](projekt-template) – ein leeres Gerüst, mit dem euer Projekt starten kann
+- [`folien/`](folien) – die Folien der bisherigen Termine als PDF
+
+## Zum Nachklicken und zur Inspiration
+
+- **Layout-Spielwiese** (Termin 4): Flexbox, Grid, Zentrieren, `fr` & Areas, Responsive, `100dvh`, CSS-Variablen und Tailwind vs. CSS zum Durchklicken – mit dem passenden Code daneben.
+  - Online: https://claude.ai/artifact/MKbnK8V3EVx8NgV1hKAsKz
+  - Offline: [`bausteine/t4-layout-spielwiese/`](bausteine/t4-layout-spielwiese) – `index.html` im Browser öffnen
+- **Inspiration statt KI-Einheitslook:** [awwwards.com/websites](https://www.awwwards.com/websites/) – ausgezeichnete Websites zum Anschauen. Schaut euch dort zwei, drei Seiten an, bevor ihr Farben und Schrift für euer Projekt festlegt.
 
 ## Wichtige Termine
 
