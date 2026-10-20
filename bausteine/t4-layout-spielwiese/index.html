@@ -1,0 +1,1522 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Layout-Spielwiese</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: Werkbank – links Regler + Bühne, rechts der erzeugte Code; ein Thema pro Tab, je eine Beamer-Seite */
+:root {
+  --bg: #f6f7fc;
+  --fg: #1f1f1f;
+  --muted: #4a4e6c;
+  --line: #d3d6ec;
+  --line-strong: #a9aed3;
+  --card: #ffffff;
+  --surface: #eef0fb;
+  --surface-2: #dcdff2;
+  --blue: #0000ff;
+  --blue-ink: #0000d6;
+  --fill: #0000ff;
+  --purple: #612ff8;
+  --purple-ink: #4a1fd0;
+  --on-accent: #ffffff;
+  --focus: #612ff8;
+  --stage-bg: #ffffff;
+  --stage-dot: #e2e4f3;
+  --dash: #7a80ff;
+  --code-bg: #ffffff;
+  --code-fg: #1f1f1f;
+  --c-sel: #4a1fd0;
+  --c-prop: #0000c2;
+  --c-num: #a0005f;
+  --c-str: #04664a;
+  --c-com: #5f6385;
+  --c-at: #a0005f;
+  --c-var: #00609e;
+  --flash-strong: rgba(97, 47, 248, .30);
+  --flash-weak: rgba(97, 47, 248, .09);
+  --active: rgba(0, 0, 255, .08);
+  --use: rgba(0, 0, 255, .06);
+  --ok: #0b6b3a;
+  --warn: #b0201a;
+  --warn-bg: #fdecea;
+  --k1-bg: #0000ff; --k1-fg: #ffffff;
+  --k2-bg: #612ff8; --k2-fg: #ffffff;
+  --k3-bg: #dcdff2; --k3-fg: #1f1f1f;
+  --k4-bg: #1f1f1f; --k4-fg: #ffffff;
+  --k5-bg: #c9ccff; --k5-fg: #00009c;
+  --k6-bg: #e4dbff; --k6-fg: #3a12b8;
+  --phone: #1f1f1f;
+  --font-sans: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1020; --fg: #eceeff; --muted: #a9addb; --line: #2c2f52; --line-strong: #4a4f86;
+    --card: #1b1d33; --surface: #1b1d33; --surface-2: #26294a;
+    --blue: #7a82ff; --blue-ink: #9aa0ff; --fill: #3d47f5; --purple: #9b7bff; --purple-ink: #b9a3ff;
+    --on-accent: #ffffff; --focus: #b9a3ff;
+    --stage-bg: #14162a; --stage-dot: #23264a; --dash: #6b74ff;
+    --code-bg: #12142a; --code-fg: #e9eaff;
+    --c-sel: #c2b0ff; --c-prop: #9aa2ff; --c-num: #ff9fd0; --c-str: #86e3bf; --c-com: #9a9fc9; --c-at: #ff9fd0; --c-var: #8fd3ff;
+    --flash-strong: rgba(155, 123, 255, .38); --flash-weak: rgba(155, 123, 255, .12);
+    --active: rgba(122, 130, 255, .14); --use: rgba(122, 130, 255, .10);
+    --ok: #6fdc9c; --warn: #ff8a80; --warn-bg: #3a1a22;
+    --k1-bg: #3d47f5; --k1-fg: #ffffff;
+    --k2-bg: #7a4dff; --k2-fg: #ffffff;
+    --k3-bg: #2c2f52; --k3-fg: #eceeff;
+    --k4-bg: #eceeff; --k4-fg: #12142a;
+    --k5-bg: #c9ccff; --k5-fg: #00009c;
+    --k6-bg: #e4dbff; --k6-fg: #3a12b8;
+    --phone: #050611;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1020; --fg: #eceeff; --muted: #a9addb; --line: #2c2f52; --line-strong: #4a4f86;
+  --card: #1b1d33; --surface: #1b1d33; --surface-2: #26294a;
+  --blue: #7a82ff; --blue-ink: #9aa0ff; --fill: #3d47f5; --purple: #9b7bff; --purple-ink: #b9a3ff;
+  --on-accent: #ffffff; --focus: #b9a3ff;
+  --stage-bg: #14162a; --stage-dot: #23264a; --dash: #6b74ff;
+  --code-bg: #12142a; --code-fg: #e9eaff;
+  --c-sel: #c2b0ff; --c-prop: #9aa2ff; --c-num: #ff9fd0; --c-str: #86e3bf; --c-com: #9a9fc9; --c-at: #ff9fd0; --c-var: #8fd3ff;
+  --flash-strong: rgba(155, 123, 255, .38); --flash-weak: rgba(155, 123, 255, .12);
+  --active: rgba(122, 130, 255, .14); --use: rgba(122, 130, 255, .10);
+  --ok: #6fdc9c; --warn: #ff8a80; --warn-bg: #3a1a22;
+  --k1-bg: #3d47f5; --k1-fg: #ffffff;
+  --k2-bg: #7a4dff; --k2-fg: #ffffff;
+  --k3-bg: #2c2f52; --k3-fg: #eceeff;
+  --k4-bg: #eceeff; --k4-fg: #12142a;
+  --k5-bg: #c9ccff; --k5-fg: #00009c;
+  --k6-bg: #e4dbff; --k6-fg: #3a12b8;
+  --phone: #050611;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+button, input, textarea, select { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+code, .mono { font-family: var(--font-mono); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.page {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 10px 16px;
+}
+
+/* ---------- Kopf & Tabs ---------- */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 8px 20px; flex-wrap: wrap; }
+.brand { display: flex; align-items: baseline; gap: 4px 14px; flex-wrap: wrap; min-width: 0; }
+.brand h1 { margin: 0; font-size: 23px; line-height: 1.2; letter-spacing: -.01em; font-weight: 700; }
+.brand h1 .mark { color: var(--blue); }
+.brand .sub { color: var(--muted); font-size: 15px; }
+.top-tools { display: flex; gap: 8px; align-items: center; }
+.btn {
+  min-height: 36px; padding: 4px 12px; border-radius: 5px; cursor: pointer;
+  border: 1.5px solid var(--line-strong); background: var(--card); color: var(--fg); font-size: 15px;
+}
+.btn:hover { border-color: var(--blue); }
+.btn.small { min-height: 30px; font-size: 14px; padding: 2px 10px; }
+
+.tabs {
+  display: flex; gap: 2px; margin-top: 6px;
+  overflow-x: auto; scrollbar-width: thin;
+  border-bottom: 2px solid var(--line);
+}
+.tab {
+  appearance: none; border: 0; background: transparent; cursor: pointer;
+  font-size: 16.5px; font-weight: 600; color: var(--muted);
+  padding: 8px 13px 7px; margin-bottom: -2px;
+  border-bottom: 3px solid transparent; white-space: nowrap;
+  display: flex; align-items: baseline; gap: 7px;
+}
+.tab .nr { font-family: var(--font-mono); font-size: 13px; font-weight: 400; }
+.tab:hover { color: var(--fg); }
+.tab[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--blue); }
+.tab[aria-selected="true"] .nr { color: var(--blue); }
+
+/* ---------- Tab-Inhalt ---------- */
+.panel { padding-top: 12px; }
+.parts { display: flex; align-items: center; gap: 8px 14px; flex-wrap: wrap; margin-bottom: 10px; }
+.parts .lbl { font-size: 15px; color: var(--muted); }
+.work { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px 22px; }
+@media (min-width: 980px) {
+  .work { grid-template-columns: minmax(0, 1.42fr) minmax(0, 1fr); }
+}
+.left { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.right { min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+
+/* Regler */
+.controls { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: flex-end; }
+.ctl { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.ctl-l { font-family: var(--font-mono); font-size: 14px; color: var(--muted); }
+.seg { display: flex; flex-wrap: wrap; gap: 4px; }
+.seg button, .tgl {
+  min-height: 36px; padding: 3px 11px; border-radius: 5px; cursor: pointer;
+  border: 1.5px solid var(--line-strong); background: var(--card); color: var(--fg);
+  font-size: 15.5px; line-height: 1.25;
+}
+.seg button.mono { font-family: var(--font-mono); font-size: 15px; }
+.seg button:hover, .tgl:hover { border-color: var(--blue); }
+.seg button[aria-pressed="true"] { background: var(--fill); border-color: var(--fill); color: var(--on-accent); }
+.tgl { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 15px; }
+.tgl::before {
+  content: ""; width: 16px; height: 16px; border-radius: 3px; flex: none;
+  border: 2px solid var(--line-strong); background: var(--card);
+}
+.tgl[aria-pressed="true"] { border-color: var(--fill); }
+.tgl[aria-pressed="true"]::before {
+  background: var(--fill); border-color: var(--fill);
+  box-shadow: inset 0 0 0 2px var(--card);
+}
+.ctl-range input[type="range"] { width: min(220px, 70vw); accent-color: var(--fill); height: 28px; margin: 0; }
+.ctl-range output { color: var(--fg); font-weight: 600; font-variant-numeric: tabular-nums; }
+.presets { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.presets .ctl-l { margin-right: 4px; }
+
+/* Bühne */
+.stage {
+  position: relative; min-width: 0;
+  background-color: var(--stage-bg);
+  background-image: radial-gradient(var(--stage-dot) 1.2px, transparent 1.4px);
+  background-size: 18px 18px;
+  border: 1.5px solid var(--line); border-radius: 8px;
+  padding: 16px; overflow-x: auto;
+}
+.stage-note { font-size: 15.5px; color: var(--muted); margin: 8px 0 0; font-variant-numeric: tabular-nums; }
+.stage-note strong { color: var(--fg); }
+.warn { color: var(--warn); font-weight: 600; }
+.okay { color: var(--ok); font-weight: 600; }
+
+.explain { background: var(--surface); border-radius: 8px; padding: 10px 16px 12px; font-size: 17px; line-height: 1.5; }
+.explain h3 { margin: 0 0 2px; font-size: 14px; font-family: var(--font-mono); font-weight: 600; color: var(--purple-ink); }
+.explain p { margin: 0; max-width: 75ch; }
+.explain p + p { margin-top: 6px; }
+.explain code, .stage-note code, .ctl-note code { font-size: .92em; }
+.hint { border-left: 0; font-size: 16px; color: var(--fg); background: var(--surface-2); padding: 8px 14px; border-radius: 6px; margin: 0; }
+
+/* Code-Panel */
+.codebox { background: var(--code-bg); border: 1.5px solid var(--line); border-radius: 8px; overflow: hidden; }
+@media (min-width: 980px) {
+  .codebox { position: sticky; top: 10px; display: flex; flex-direction: column; max-height: calc(100dvh - 24px); }
+  .code-body { overflow: auto; min-height: 0; }
+}
+.code-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 5px 8px 5px 14px; border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono); font-size: 14px; color: var(--muted);
+}
+.code-sec { font-family: var(--font-mono); font-size: 13px; color: var(--muted); padding: 10px 16px 0; letter-spacing: .02em; }
+.code-sec + pre { padding-top: 4px; }
+pre.code {
+  margin: 0; padding: 10px 0 12px; overflow-x: auto;
+  font-family: var(--font-mono); font-size: 16.5px; line-height: 1.5; color: var(--code-fg); tab-size: 2;
+}
+pre.code > code { display: inline-block; min-width: 100%; font-size: inherit; }
+.ln { display: block; padding: 0 16px; white-space: pre; min-height: 1.5em; }
+.ln.chg { box-shadow: inset 4px 0 0 var(--purple); animation: flash 2.4s ease-out both; }
+.ln.act { background: var(--active); box-shadow: inset 4px 0 0 var(--blue); }
+.ln.dim { opacity: .5; }
+.ln.use { background: var(--use); box-shadow: inset 4px 0 0 var(--blue); }
+.ln.chg.act, .ln.chg.use { animation-name: flash; }
+@keyframes flash { 0% { background: var(--flash-strong); } 100% { background: var(--flash-weak); } }
+.code .s { color: var(--c-sel); font-weight: 600; }
+.code .p { color: var(--c-prop); }
+.code .n { color: var(--c-num); }
+.code .str { color: var(--c-str); }
+.code .c { color: var(--c-com); font-style: italic; }
+.code .at { color: var(--c-at); font-weight: 600; }
+.code .var { color: var(--c-var); }
+.code .fn { color: var(--c-sel); }
+.code .t { color: var(--c-sel); }
+.code .a { color: var(--c-prop); }
+
+.foot {
+  margin-top: 18px; padding-top: 10px; border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px;
+  font-size: 14.5px; color: var(--muted);
+}
+kbd { font-family: var(--font-mono); font-size: 13px; border: 1px solid var(--line-strong); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: var(--card); color: var(--fg); }
+
+/* ---------- Demo-Basisstile (Farben, Schrift). Layout kommt aus dem gezeigten Code. ---------- */
+.k1 { background: var(--k1-bg); color: var(--k1-fg); }
+.k2 { background: var(--k2-bg); color: var(--k2-fg); }
+.k3 { background: var(--k3-bg); color: var(--k3-fg); }
+.k4 { background: var(--k4-bg); color: var(--k4-fg); }
+.k5 { background: var(--k5-bg); color: var(--k5-fg); }
+.k6 { background: var(--k6-bg); color: var(--k6-fg); }
+
+/* Tab 1 */
+.fg-axes { position: relative; padding: 34px 0 0 32px; min-width: 320px; }
+.fg-c { border: 2px dashed var(--dash); background: var(--stage-bg); }
+.fg-i { padding: .3em .5em; font-weight: 600; border-radius: 4px; font-size: 15px; line-height: 1.3; }
+.fg-i.fg-logo { font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
+.ax { position: absolute; color: var(--blue-ink); font-family: var(--font-mono); font-size: 13.5px; pointer-events: none; }
+.ax.cross { color: var(--purple-ink); }
+.ax-x { top: 4px; left: 32px; right: 0; height: 24px; display: flex; align-items: flex-start; }
+.ax-x::before { content: ""; position: absolute; left: 0; right: 10px; bottom: 2px; height: 2px; background: currentColor; }
+.ax-x::after { content: ""; position: absolute; right: 0; bottom: -3px; border: 6px solid transparent; border-left: 10px solid currentColor; border-right: 0; }
+.ax-y { top: 34px; left: 4px; bottom: 0; width: 26px; display: flex; justify-content: flex-start; }
+.ax-y::before { content: ""; position: absolute; top: 0; bottom: 10px; right: 2px; width: 2px; background: currentColor; }
+.ax-y::after { content: ""; position: absolute; bottom: 0; right: -3px; border: 6px solid transparent; border-top: 10px solid currentColor; border-bottom: 0; }
+.ax-y span { writing-mode: vertical-rl; white-space: nowrap; }
+.ax span { background: var(--stage-bg); padding: 0 4px; position: relative; }
+
+/* Tab 2 */
+.f1-nav { background: var(--card); border: 2px dashed var(--dash); padding: 10px; }
+.f1-it { border-radius: 5px; min-height: 44px; display: flex; align-items: center; padding: 0 12px; font-weight: 600; white-space: nowrap; }
+.f1-logo { gap: 8px; }
+.f1-logo svg { flex: none; }
+.f1-suche { padding: 0; background: transparent; }
+.f1-suche input {
+  width: 100%; min-width: 0; height: 44px; padding: 0 12px; border-radius: 5px;
+  border: 2px solid var(--line-strong); background: var(--stage-bg); font-size: 16px;
+}
+.f1-mess { position: relative; height: 46px; margin-top: 6px; }
+.f1-mess div {
+  position: absolute; top: 0; text-align: center; font-family: var(--font-mono); font-size: 14px;
+  border-top: 2px solid var(--purple); padding-top: 3px; color: var(--purple-ink); white-space: nowrap; overflow: visible;
+  font-variant-numeric: tabular-nums; line-height: 1.25;
+}
+.f1-mess div span { display: block; color: var(--muted); font-size: 12.5px; }
+.ftab-wrap { overflow-x: auto; max-width: 100%; }
+.ftab { border-collapse: collapse; }
+.ftab th { font-family: var(--font-mono); font-size: 14px; font-weight: 400; color: var(--muted); text-align: left; padding: 0 14px 2px 0; }
+.ftab td { padding: 2px 14px 2px 0; vertical-align: middle; }
+.ftab td:first-child { font-weight: 600; font-family: var(--font-mono); font-size: 15px; white-space: nowrap; }
+.ftab .seg button { min-height: 34px; padding: 2px 9px; }
+
+.f1b-karte { background: var(--card); border: 2px dashed var(--dash); border-radius: 8px; padding: 12px; }
+.f1b-avatar { border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 17px; }
+.f1b-titel { margin: 0; font-size: 18px; font-weight: 700; line-height: 1.35; }
+.f1b-sub { margin: 2px 0 0; font-size: 15px; color: var(--muted); }
+
+/* Tab 3 */
+.z-wrap { position: relative; }
+.z-box { border: 2px dashed var(--dash); background: var(--stage-bg); }
+.z-kind { padding: 10px 16px; font-weight: 700; border-radius: 5px; font-size: 18px; }
+.z-ov { position: absolute; inset: 2px; pointer-events: none; }
+.z-cell { position: absolute; border: 2px dashed var(--purple); border-radius: 2px; }
+.z-cell span { position: absolute; top: 0; left: 0; font-family: var(--font-mono); font-size: 12px; color: var(--purple-ink); background: var(--stage-bg); padding: 0 4px; line-height: 1.4; }
+.z-legend { display: grid; gap: 4px; font-size: 16px; }
+.z-legend div { display: grid; grid-template-columns: 9.5em 1fr; gap: 10px; }
+.z-legend code { color: var(--blue-ink); font-weight: 600; }
+
+/* Tab 4 */
+.g-raster { background: var(--stage-bg); outline: 2px dashed var(--dash); outline-offset: 0; }
+.g-col { min-height: 110px; display: grid; place-items: center; font-family: var(--font-mono); font-size: 22px; font-weight: 600; border-radius: 4px; }
+.g-ruler { display: grid; margin-bottom: 8px; }
+.g-ruler div { text-align: center; font-family: var(--font-mono); font-size: 14px; color: var(--purple-ink); border-bottom: 2px solid var(--purple); padding-bottom: 2px; line-height: 1.3; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g-ruler div b { display: block; color: var(--fg); font-size: 15px; }
+.g-math { font-family: var(--font-mono); font-size: 15.5px; margin: 10px 0 0; line-height: 1.6; color: var(--fg); font-variant-numeric: tabular-nums; }
+.g-math .res { color: var(--blue-ink); font-weight: 600; }
+.ga-seite { border: 2px dashed var(--dash); padding: 0; min-width: 300px; }
+.ga-seite > * { border-radius: 5px; padding: 8px 12px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; min-width: 0; font-family: var(--font-mono); }
+.ga-seite b { font-size: 18px; }
+.ga-seite small { font-size: 12.5px; opacity: .85; }
+
+/* Tab 5 */
+.r-devices { display: flex; flex-wrap: wrap; gap: 6px; }
+.r-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+.r-chip { font-family: var(--font-mono); font-size: 14px; padding: 3px 10px; border-radius: 999px; border: 1.5px solid var(--line-strong); color: var(--muted); }
+.r-chip.on { border-color: var(--fill); background: var(--fill); color: var(--on-accent); }
+.r-outer { overflow: hidden; border-radius: 6px; box-shadow: 0 0 0 1.5px var(--line-strong); background: #ffffff; }
+.r-inner { transform-origin: 0 0; }
+.r-inner iframe, .tw-inner iframe { display: block; border: 0; background: #ffffff; }
+.cq-wrap { display: flex; gap: 14px; align-items: flex-start; min-width: 520px; }
+.cq-col { border: 2px dashed var(--dash); padding: 12px; border-radius: 6px; background: var(--stage-bg); }
+.cq-side { flex: none; }
+.cq-main { flex: 1; min-width: 0; }
+.cq-lab { font-family: var(--font-mono); font-size: 13.5px; color: var(--muted); margin: 0 0 8px; font-variant-numeric: tabular-nums; }
+.cq-lab b { color: var(--fg); }
+.cq-karte { background: var(--card); border: 1.5px solid var(--line); border-radius: 6px; padding: 10px; }
+.cq-bild { background: var(--k5-bg); border-radius: 4px; min-height: 88px; display: grid; place-items: center; }
+.cq-bild svg { width: 110px; height: auto; }
+.cq-karte h4 { margin: 0; font-size: 18px; }
+.cq-karte p { margin: 2px 0 0; font-size: 15px; color: var(--muted); }
+
+/* Tab 6 */
+.dv-phones { display: flex; flex-wrap: wrap; gap: 18px 34px; justify-content: center; }
+.dv-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.dv-col h4 { margin: 0; font-family: var(--font-mono); font-size: 17px; color: var(--blue-ink); }
+.phone { width: 252px; padding: 10px; border-radius: 34px; background: var(--phone); box-shadow: 0 0 0 1.5px var(--line-strong); }
+.screen { position: relative; height: 440px; border-radius: 25px; overflow: hidden; background: #ffffff; color: #1f1f1f; }
+.dv-url { position: absolute; left: 0; right: 0; top: 0; background: #eef0fb; border-bottom: 1px solid #c9cde6; display: flex; align-items: center; justify-content: center; z-index: 3; transition: height .35s ease; overflow: hidden; }
+.dv-url .pill { background: #ffffff; border: 1px solid #c9cde6; border-radius: 999px; font-size: 12.5px; padding: 2px 14px; white-space: nowrap; color: #4a4e6c; transition: transform .35s ease; }
+.dv-url.mini .pill { transform: scale(.82); border-color: transparent; background: transparent; }
+.dv-tools { position: absolute; left: 0; right: 0; bottom: 0; height: 44px; background: rgba(238, 240, 251, .96); border-top: 1px solid #c9cde6; display: flex; align-items: center; justify-content: space-around; z-index: 3; transition: transform .35s ease; }
+.dv-tools.weg { transform: translateY(100%); }
+.dv-tools i { display: block; width: 18px; height: 18px; border: 2px solid #4a4e6c; border-radius: 4px; }
+.dv-tools i:nth-child(1), .dv-tools i:nth-child(2) { border-radius: 0; border-width: 0 0 2.5px 2.5px; transform: rotate(45deg); width: 12px; height: 12px; }
+.dv-tools i:nth-child(2) { transform: rotate(-135deg); }
+.dv-seite { position: absolute; left: 0; right: 0; z-index: 1; background: #eef0fb; display: flex; flex-direction: column; padding: 14px; gap: 6px; transition: top .35s ease, height .35s ease; }
+.dv-seite h5 { margin: 0; font-size: 19px; color: #1f1f1f; }
+.dv-seite p { margin: 0; font-size: 14px; color: #4a4e6c; line-height: 1.4; }
+.dv-seite .cta { margin-top: auto; background: #0000ff; color: #ffffff; border-radius: 8px; text-align: center; font-weight: 700; padding: 10px; font-size: 15px; }
+.dv-sicht { position: absolute; left: 3px; right: 3px; z-index: 2; border: 2px dashed #612ff8; border-radius: 4px; pointer-events: none; transition: top .35s ease, height .35s ease; }
+.dv-sicht span { position: absolute; right: 4px; top: 4px; background: #612ff8; color: #ffffff; font-size: 11px; font-family: var(--font-mono); padding: 1px 6px; border-radius: 3px; }
+.dv-mess { font-family: var(--font-mono); font-size: 14.5px; text-align: center; line-height: 1.45; max-width: 290px; font-variant-numeric: tabular-nums; }
+.dv-units { display: grid; gap: 3px; font-size: 16px; }
+.dv-units div { display: grid; grid-template-columns: 4.2em 1fr; gap: 10px; }
+.dv-units code { font-weight: 600; color: var(--blue-ink); }
+
+/* Tab 7 */
+.v-ctl input[type="color"] { width: 64px; height: 38px; padding: 2px; border: 1.5px solid var(--line-strong); border-radius: 5px; background: var(--card); cursor: pointer; }
+.v-outer { border-radius: 6px; box-shadow: 0 0 0 1.5px var(--line-strong); overflow: hidden; }
+.v-outer iframe { display: block; width: 100%; height: 240px; border: 0; background: #ffffff; }
+
+/* Tab 8 */
+.tw-grid { display: grid; gap: 14px; }
+.tw-cell h4 { margin: 0 0 6px; font-size: 15px; font-family: var(--font-mono); color: var(--muted); font-weight: 600; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.tw-cell h4 span { color: var(--fg); }
+.tw-outer { position: relative; overflow: hidden; border-radius: 6px; box-shadow: 0 0 0 1.5px var(--line-strong); background: #ffffff; }
+.tw-inner { transform-origin: 0 0; }
+.tw-offline { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px; background: var(--surface); color: var(--fg); font-size: 16px; }
+.tw-edit textarea {
+  width: 100%; min-height: 64px; resize: vertical; padding: 8px 10px; border-radius: 6px;
+  border: 1.5px solid var(--line-strong); background: var(--card); font-family: var(--font-mono); font-size: 16px; line-height: 1.4;
+}
+.tw-edit label { font-family: var(--font-mono); font-size: 14px; color: var(--muted); display: block; margin-bottom: 3px; }
+.tw-try { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 6px; font-size: 15px; color: var(--muted); }
+.tw-try .btn { font-family: var(--font-mono); }
+.tw-count { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; font-size: 16px; font-variant-numeric: tabular-nums; }
+.tw-count dt { font-weight: 600; }
+.tw-count dd { margin: 0; }
+.tw-table-wrap { overflow-x: auto; }
+.tw-table { border-collapse: collapse; width: 100%; font-size: 15.5px; }
+.tw-table th { text-align: left; font-size: 13.5px; font-family: var(--font-mono); font-weight: 400; color: var(--muted); padding: 4px 10px; border-bottom: 1.5px solid var(--line-strong); }
+.tw-table td { padding: 5px 10px; border-bottom: 1px solid var(--line); font-family: var(--font-mono); vertical-align: top; }
+.tw-table td:first-child { color: var(--blue-ink); font-weight: 600; white-space: nowrap; }
+
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  pre.code { font-size: 14.5px; }
+  .brand h1 { font-size: 20px; }
+  .z-legend div, .dv-units div { grid-template-columns: 1fr; gap: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .ln.chg { background: var(--flash-weak); }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <div class="brand">
+      <h1>Layout-<span class="mark">Spielwiese</span></h1>
+      <span class="sub">Termin 4 · Flexbox, Grid, Responsive, Tailwind</span>
+    </div>
+    <div class="top-tools">
+      <button class="btn" type="button" id="theme-btn" aria-label="Farbschema umschalten">Schema: System</button>
+    </div>
+  </header>
+  <nav class="tabs" role="tablist" aria-label="Themen" id="tabs"></nav>
+  <main id="panels"></main>
+  <footer class="foot">
+    <span>Web-Engineering 1 · DHBW Karlsruhe · TINF25B3 · Termin 4</span>
+    <span><kbd>←</kbd> <kbd>→</kbd> wechseln die Tabs</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+'use strict';
+
+/* ================= Hilfsfunktionen ================= */
+function h(tag, attrs) {
+  const el = document.createElement(tag);
+  if (attrs) for (const k in attrs) {
+    const v = attrs[k];
+    if (v == null || v === false) continue;
+    if (k === 'class') el.className = v;
+    else if (k === 'text') el.textContent = v;
+    else if (k === 'html') el.innerHTML = v;
+    else if (k.slice(0, 2) === 'on' && typeof v === 'function') el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v === true ? '' : v);
+  }
+  for (let i = 2; i < arguments.length; i++) add(el, arguments[i]);
+  return el;
+}
+function add(el, kid) {
+  if (kid == null || kid === false) return;
+  if (Array.isArray(kid)) { kid.forEach(k => add(el, k)); return; }
+  el.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+}
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const span = (c, s) => '<span class="' + c + '">' + esc(s) + '</span>';
+const fmt = (n, d) => Number(n).toLocaleString('de-DE', { maximumFractionDigits: d || 0, minimumFractionDigits: 0 });
+const slug = v => String(v).replace(/[^a-z0-9]+/gi, '-').replace(/^-+|-+$/g, '').toLowerCase() || 'x';
+const px = n => Math.round(n) + ' px';
+
+function styleTag(id) {
+  const s = document.createElement('style');
+  s.id = id;
+  document.head.appendChild(s);
+  return s;
+}
+
+/* ---------- Bedienelemente ---------- */
+function seg(id, label, opts, get, set, o) {
+  o = o || {};
+  const lid = id + '-l';
+  const wrap = h('div', { class: 'ctl', role: 'group', 'aria-labelledby': label ? lid : null, 'aria-label': label ? null : (o.aria || id) });
+  if (label) wrap.append(h('span', { class: 'ctl-l', id: lid }, label));
+  const row = h('div', { class: 'seg' });
+  const btns = opts.map(op => {
+    const v = Array.isArray(op) ? op[0] : op, t = Array.isArray(op) ? op[1] : op;
+    const b = h('button', { type: 'button', id: id + '-' + slug(v), class: o.plain ? '' : 'mono', 'aria-pressed': 'false', onclick: () => set(v) }, t);
+    b._v = v; row.append(b); return b;
+  });
+  wrap.append(row);
+  wrap.sync = () => btns.forEach(b => b.setAttribute('aria-pressed', String(b._v === get())));
+  return wrap;
+}
+function range(id, label, min, max, step, get, set, unit) {
+  unit = unit == null ? ' px' : unit;
+  const out = h('output', { id: id + '-o', for: id });
+  const inp = h('input', { type: 'range', id: id, min: min, max: max, step: step, value: get(), oninput: e => set(+e.target.value) });
+  const wrap = h('div', { class: 'ctl ctl-range' }, h('label', { class: 'ctl-l', for: id }, label + ' ', out), inp);
+  wrap.sync = () => { if (+inp.value !== get()) inp.value = get(); out.textContent = get() + unit; };
+  return wrap;
+}
+function toggle(id, label, get, set) {
+  const b = h('button', { type: 'button', class: 'tgl', id: id, 'aria-pressed': 'false', onclick: () => set(!get()) }, label);
+  b.sync = () => b.setAttribute('aria-pressed', String(!!get()));
+  return b;
+}
+
+/* ---------- CSS-Modell → Text + angewendetes CSS ---------- */
+/* item: {sel, decls:[[prop, value, {off, note}] | {c}] , inline} | {at, rules, tag} | {c: 'x' | ['a','b']} | {blank:true} */
+function cssLines(items, ind, tag, out) {
+  ind = ind || ''; out = out || [];
+  for (const it of items) {
+    const tg = it.tag || tag || null;
+    if (it.blank) { out.push({ t: '', tag: tg }); continue; }
+    if (it.c != null) { pushComment(out, it.c, ind, tg); continue; }
+    if (it.at) {
+      out.push({ t: ind + it.at + ' {', tag: tg });
+      cssLines(it.rules, ind + '  ', tg, out);
+      out.push({ t: ind + '}', tag: tg });
+      continue;
+    }
+    if (it.inline && it.decls.length === 1 && Array.isArray(it.decls[0]) && !(it.decls[0][2] || {}).note) {
+      out.push({ t: ind + it.sel + ' { ' + declText(it.decls[0]) + ' }', tag: tg });
+      continue;
+    }
+    out.push({ t: ind + it.sel + ' {', tag: tg });
+    for (const d of it.decls) {
+      if (!Array.isArray(d)) { pushComment(out, d.c, ind + '  ', tg); continue; }
+      const v = d[1];
+      if (Array.isArray(v)) {
+        out.push({ t: ind + '  ' + d[0] + ':', tag: tg });
+        v.forEach((x, i) => out.push({ t: ind + '    ' + x + (i === v.length - 1 ? ';' : ''), tag: tg }));
+      } else out.push({ t: ind + '  ' + declText(d), tag: tg });
+    }
+    out.push({ t: ind + '}', tag: tg });
+  }
+  return out;
+}
+function declText(d) {
+  const o = d[2] || {};
+  let s = d[0] + ': ' + d[1] + ';';
+  if (o.off) s = '/* ' + s + ' */';
+  if (o.note) s += ' /* ' + o.note + ' */';
+  return s;
+}
+function pushComment(out, c, ind, tg) {
+  const arr = [].concat(c);
+  if (arr.length === 1) out.push({ t: ind + '/* ' + arr[0] + ' */', tag: tg });
+  else {
+    out.push({ t: ind + '/*', tag: tg });
+    arr.forEach(l => out.push({ t: ind + '   ' + l, tag: tg }));
+    out.push({ t: ind + '*/', tag: tg });
+  }
+}
+function cssApplied(items, scope) {
+  let s = '';
+  for (const it of items) {
+    if (it.blank || it.c != null) continue;
+    if (it.at) { s += it.at + ' {\n' + cssApplied(it.rules, scope) + '}\n'; continue; }
+    const sel = scope ? it.sel.split(',').map(x => { x = x.trim(); return x === ':root' ? scope : scope + ' ' + x; }).join(', ') : it.sel.trim();
+    const decls = it.decls.filter(d => Array.isArray(d) && !(d[2] && d[2].off))
+      .map(d => d[0] + ': ' + (Array.isArray(d[1]) ? d[1].join(' ') : d[1]));
+    s += sel + ' { ' + decls.join('; ') + (decls.length ? ';' : '') + ' }\n';
+  }
+  return s;
+}
+const textOf = lines => lines.map(l => l.t).join('\n');
+
+/* ---------- Syntax-Färbung ---------- */
+const VAL_RE = /\b(var|calc|repeat|minmax|oklch|rgb|rgba|hsl|scale)(?=\()|(--[\w-]+)|(#[0-9a-fA-F]{3,8}\b)|("[^"]*"|'[^']*')|((?<![\w-])-?\d*\.?\d+(?:px|rem|em|fr|%|vh|dvh|svh|lvh|vw|ms|s|deg)?(?![\w-]))/g;
+function hlVal(s) {
+  let out = '', i = 0, m;
+  VAL_RE.lastIndex = 0;
+  while ((m = VAL_RE.exec(s))) {
+    out += esc(s.slice(i, m.index));
+    const cls = m[1] ? 'fn' : m[2] ? 'var' : m[3] ? 'n' : m[4] ? 'str' : 'n';
+    out += span(cls, m[0]);
+    i = m.index + m[0].length;
+    if (m[0].length === 0) VAL_RE.lastIndex++;
+  }
+  return out + esc(s.slice(i));
+}
+function hlDecls(s) {
+  const parts = s.match(/[^;]+;?|;/g) || [];
+  return parts.map(p => {
+    const m = p.match(/^(\s*)(--?[a-zA-Z][\w-]*)(\s*:\s*)(.*?)(;?)(\s*)$/);
+    if (m) return esc(m[1]) + span(m[2].slice(0, 2) === '--' ? 'var' : 'p', m[2]) + esc(m[3]) + hlVal(m[4]) + esc(m[5]) + esc(m[6]);
+    const m2 = p.match(/^(\s*)([a-zA-Z-]+)(:)\s*$/);
+    if (m2) return esc(m2[1]) + span('p', m2[2]) + esc(m2[3]);
+    return hlVal(p);
+  }).join('');
+}
+function hlCSSCode(s) {
+  if (!s.trim()) return esc(s);
+  let m = s.match(/^(\s*)(@[\w-]+)(.*)$/);
+  if (m) return esc(m[1]) + span('at', m[2]) + hlVal(m[3]);
+  const t = s.trim();
+  if (t === '}' || t === '{') return esc(s);
+  m = s.match(/^(\s*)([^{}]+?)(\s*\{\s*)(.*?)(\s*\}\s*)$/);
+  if (m) return esc(m[1]) + span('s', m[2]) + esc(m[3]) + hlDecls(m[4]) + esc(m[5]);
+  m = s.match(/^(\s*)([^{}]+?)(\s*\{\s*)$/);
+  if (m) return esc(m[1]) + span('s', m[2]) + esc(m[3]);
+  return hlDecls(s);
+}
+function hlCSS(line, st) {
+  let out = '', i = 0;
+  while (i < line.length) {
+    if (st.inC) {
+      const e = line.indexOf('*/', i);
+      if (e < 0) { out += span('c', line.slice(i)); return out; }
+      out += span('c', line.slice(i, e + 2)); i = e + 2; st.inC = false; continue;
+    }
+    const s = line.indexOf('/*', i);
+    if (s < 0) { out += hlCSSCode(line.slice(i)); break; }
+    out += hlCSSCode(line.slice(i, s));
+    i = s; st.inC = true;
+    const e = line.indexOf('*/', s + 2);
+    if (e < 0) { out += span('c', line.slice(s)); return out; }
+    out += span('c', line.slice(s, e + 2)); i = e + 2; st.inC = false;
+  }
+  return out;
+}
+function hlHTML(s) {
+  const re = /<\/?[a-zA-Z][\w-]*|\s[\w:.-]+(?==")|="[^"]*"|\/?>/g;
+  let out = '', i = 0, m;
+  while ((m = re.exec(s))) {
+    out += esc(s.slice(i, m.index));
+    const t = m[0];
+    if (t[0] === '=') out += '=' + span('str', t.slice(1));
+    else if (/^\s/.test(t)) out += esc(t[0]) + span('a', t.slice(1));
+    else out += span('t', t);
+    i = re.lastIndex;
+  }
+  return out + esc(s.slice(i));
+}
+
+/* ---------- Code-Panel ---------- */
+function CodePanel(id, title) {
+  const body = h('div', { class: 'code-body' });
+  const copyBtn = h('button', { type: 'button', class: 'btn small', id: id + '-copy' }, 'Kopieren');
+  const el = h('div', { class: 'codebox', id: id },
+    h('div', { class: 'code-head' }, h('span', null, title), copyBtn), body);
+  let prev = null, lastSig = '', lastText = '';
+  copyBtn.addEventListener('click', () => {
+    const done = ok => { copyBtn.textContent = ok ? 'Kopiert' : 'Markiert – Strg+C'; setTimeout(() => { copyBtn.textContent = 'Kopieren'; }, 1600); };
+    const selectAll = () => { try { const r = document.createRange(); r.selectNodeContents(body); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); } catch (e) {} done(false); };
+    try { navigator.clipboard.writeText(lastText).then(() => done(true), selectAll); } catch (e) { selectAll(); }
+  });
+  function set(sections, opt) {
+    opt = opt || {};
+    const sig = JSON.stringify([sections.map(s => [s.label, s.lang, s.lines.map(l => [l.t, l.tag])]), opt.active ? [...opt.active] : 0, opt.dim ? [...opt.dim] : 0, opt.uses || '']);
+    if (sig === lastSig) return;
+    lastSig = sig;
+    const next = {};
+    let html = '';
+    lastText = sections.map(s => textOf(s.lines)).join('\n\n');
+    for (const sec of sections) {
+      const key = sec.label || '_';
+      const before = prev && prev[key];
+      const counts = {};
+      if (before) before.forEach(t => { counts[t] = (counts[t] || 0) + 1; });
+      next[key] = sec.lines.map(l => l.t);
+      if (sec.label) html += '<div class="code-sec">' + esc(sec.label) + '</div>';
+      html += '<pre class="code" tabindex="0" aria-label="' + esc(sec.label || title) + '"><code>';
+      const st = { inC: false };
+      for (const l of sec.lines) {
+        const cls = ['ln'];
+        if (before) {
+          if (counts[l.t] > 0) counts[l.t]--; else if (l.t.trim() && l.t.trim() !== '}') cls.push('chg');
+        }
+        if (opt.active && l.tag && opt.active.has(l.tag)) cls.push('act');
+        if (opt.dim && l.tag && opt.dim.has(l.tag)) cls.push('dim');
+        if (opt.uses && l.t.indexOf(opt.uses) >= 0 && l.t.indexOf('var(') >= 0) cls.push('use');
+        const inner = sec.lang === 'html' ? hlHTML(l.t) : hlCSS(l.t, st);
+        html += '<span class="' + cls.join(' ') + '">' + (inner || '') + '</span>';
+      }
+      html += '</code></pre>';
+    }
+    prev = next;
+    body.innerHTML = html;
+  }
+  return { el: el, set: set, reset: () => { prev = null; lastSig = ''; } };
+}
+
+/* ---------- Iframe-Helfer ---------- */
+const FRAME_LISTENER =
+  "addEventListener('message',function(e){if(e.source!==parent)return;var d=e.data||{};" +
+  "if(d.css!=null){var s=document.getElementById('live');if(s)s.textContent=d.css;}" +
+  "if(d.rootAttr){for(var k in d.rootAttr){document.documentElement.setAttribute(k,d.rootAttr[k]);}}" +
+  "if(d.cls!=null&&d.id){var el=document.getElementById(d.id);if(el)el.className=d.cls;}});";
+function frameDoc(head, body, script) {
+  return '<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' +
+    head + '</head><body>' + body + '<script>' + FRAME_LISTENER + (script || '') + '<\/script></body></html>';
+}
+
+/* ---------- Bausteine einer Tab-Seite ---------- */
+function explain(html) { return h('div', { class: 'explain' }, h('h3', null, 'Was passiert hier?'), h('div', { html: html })); }
+function work(left, right) { return h('div', { class: 'work' }, h('div', { class: 'left' }, left), h('div', { class: 'right' }, right)); }
+function syncAll(list) { list.forEach(c => c && c.sync && c.sync()); }
+
+/* ======================================================================
+   Tab 1: Flex oder Grid
+   ====================================================================== */
+function tabFlexGrid(sec) {
+  const S = { display: 'flex', dir: 'row', wrap: 'nowrap', jc: 'flex-start', ai: 'stretch', gap: 8,
+    gtc: '1fr 1fr 1fr', ji: 'stretch', gai: 'stretch' };
+  const set = k => v => { S[k] = v; update(); };
+  const cDisplay = seg('fg-display', 'display', ['block', 'flex', 'grid'], () => S.display, set('display'));
+  const cDir = seg('fg-dir', 'flex-direction', ['row', 'column'], () => S.dir, set('dir'));
+  const cWrap = seg('fg-wrap', 'flex-wrap', ['nowrap', 'wrap'], () => S.wrap, set('wrap'));
+  const cJc = seg('fg-jc', 'justify-content', ['flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly'], () => S.jc, set('jc'));
+  const cAi = seg('fg-ai', 'align-items', ['stretch', 'flex-start', 'center', 'flex-end', 'baseline'], () => S.ai, set('ai'));
+  const cGtc = seg('fg-gtc', 'grid-template-columns', ['1fr 1fr 1fr', '200px 1fr', '1fr 2fr', 'repeat(4, 1fr)', 'repeat(auto-fit, minmax(150px, 1fr))'], () => S.gtc, set('gtc'));
+  const cJi = seg('fg-ji', 'justify-items', ['stretch', 'start', 'center', 'end'], () => S.ji, set('ji'));
+  const cGai = seg('fg-gai', 'align-items', ['stretch', 'start', 'center', 'end'], () => S.gai, set('gai'));
+  const cGap = range('fg-gap', 'gap', 0, 40, 1, () => S.gap, set('gap'));
+  const ctls = [cDisplay, cDir, cWrap, cJc, cAi, cGtc, cJi, cGai, cGap];
+  const flexOnly = [cDir, cWrap, cJc, cAi], gridOnly = [cGtc, cJi, cGai];
+
+  const items = ['Logo', 'Start', 'Über uns', 'Ein längerer Menüpunkt', 'Kontakt', 'Login']
+    .map((t, i) => h('div', { class: 'item fg-i k' + (i + 1) + (i === 0 ? ' fg-logo' : '') }, t));
+  const cont = h('div', { class: 'container fg-c', id: 'fg-container' }, items);
+  const axX = h('div', { class: 'ax ax-x', 'aria-hidden': 'true' }, h('span'));
+  const axY = h('div', { class: 'ax ax-y', 'aria-hidden': 'true' }, h('span'));
+  const stage = h('div', { class: 'stage', id: 'fg-stage' }, h('div', { class: 'fg-axes' }, axX, axY, cont));
+  const css = styleTag('css-flexgrid');
+  const code = CodePanel('code-flexgrid', 'CSS · .container');
+  const exp = explain('');
+  const hint = h('p', { class: 'hint' }, h('strong', null, 'Faustregel: '), 'Flexbox: eine Richtung, Inhalt bestimmt die Größe. Grid: zwei Richtungen, das Raster bestimmt die Größe.');
+
+  sec.append(work([
+    h('div', { class: 'controls' }, cDisplay, cDir, cWrap, cGap, cGtc),
+    h('div', { class: 'controls' }, cJc, cJi, cAi, cGai),
+    stage, hint
+  ], [code.el, exp]));
+
+  function rules() {
+    const d = [['display', S.display]];
+    const out = [];
+    if (S.display === 'flex') d.push(['flex-direction', S.dir], ['flex-wrap', S.wrap], ['justify-content', S.jc], ['align-items', S.ai], ['gap', S.gap + 'px']);
+    else if (S.display === 'grid') d.push(['grid-template-columns', S.gtc], ['justify-items', S.ji], ['align-items', S.gai], ['gap', S.gap + 'px']);
+    else d.push({ c: 'Block: Kinder stehen untereinander' });
+    d.push(['height', '260px']);
+    out.push({ sel: '.container', decls: d });
+    return out;
+  }
+  function update() {
+    syncAll(ctls);
+    flexOnly.forEach(c => { c.hidden = S.display !== 'flex'; });
+    gridOnly.forEach(c => { c.hidden = S.display !== 'grid'; });
+    const r = rules();
+    css.textContent = cssApplied(r, '#fg-stage');
+    code.set([{ lang: 'css', lines: cssLines(r) }]);
+    const show = S.display !== 'block';
+    axX.hidden = axY.hidden = !show;
+    if (S.display === 'flex') {
+      const row = S.dir === 'row';
+      axX.className = 'ax ax-x' + (row ? '' : ' cross');
+      axY.className = 'ax ax-y' + (row ? ' cross' : '');
+      axX.firstChild.textContent = row ? 'Hauptachse · justify-content' : 'Querachse · align-items';
+      axY.firstChild.textContent = row ? 'Querachse · align-items' : 'Hauptachse · justify-content';
+    } else if (S.display === 'grid') {
+      axX.className = 'ax ax-x'; axY.className = 'ax ax-y cross';
+      axX.firstChild.textContent = 'Spalten · justify-items';
+      axY.firstChild.textContent = 'Zeilen · align-items';
+    }
+    const txt = {
+      block: '<p>Ohne Flex oder Grid ist ein <code>div</code> ein Block: Jedes Kind nimmt die volle Breite und steht unter dem vorherigen. <code>justify-content</code> und Co. wirken hier nicht.</p>',
+      flex: '<p>Flexbox legt die Kinder entlang der <strong>Hauptachse</strong> in eine Reihe. <code>justify-content</code> verteilt den freien Platz auf der Hauptachse, <code>align-items</code> richtet die Kinder auf der <strong>Querachse</strong> aus. Mit <code>flex-direction: column</code> tauschen die Achsen ihre Richtung.</p><p>Tipp: Bei <code>baseline</code> stehen alle Texte auf derselben Grundlinie wie das große „Logo“.</p>',
+      grid: '<p>Grid legt zuerst ein <strong>Raster</strong> aus Spalten fest, die Kinder füllen es Zelle für Zelle. <code>justify-items</code> richtet jedes Kind waagerecht in seiner Zelle aus, <code>align-items</code> senkrecht. Die Breite kommt vom Raster, nicht vom Text.</p>'
+    };
+    exp.lastChild.innerHTML = txt[S.display];
+  }
+  return { update: update, onShow: update };
+}
+
+/* ======================================================================
+   Tab 2: flex: 1
+   ====================================================================== */
+function flexShort(g, s, b) {
+  if (g === 0 && s === 1 && b === 'auto') return ['0 1 auto', 'Standard'];
+  if (g === 1 && s === 1 && b === '0%') return ['1', '= 1 1 0%'];
+  if (g === 0 && s === 0 && b === 'auto') return ['none', '= 0 0 auto'];
+  if (g === 1 && s === 1 && b === 'auto') return ['auto', '= 1 1 auto'];
+  return [g + ' ' + s + ' ' + b, 'grow ' + g + ', shrink ' + s + ', basis ' + b];
+}
+function tabFlex1(sec) {
+  /* ---- Teil A ---- */
+  const ITEMS = [{ k: 'logo', label: 'Logo' }, { k: 'suche', label: 'Suchfeld' }, { k: 'button', label: 'Button' }];
+  const def = () => ({ logo: { g: 0, s: 1, b: 'auto' }, suche: { g: 0, s: 1, b: 'auto' }, button: { g: 0, s: 1, b: 'auto' } });
+  const A = { it: def(), w: 760 };
+  const B = { w: 380, minw: false, ovf: true, nowrap: true, ell: true };
+  let part = 'a';
+  const ctlA = [], ctlB = [];
+  const rows = ITEMS.map(I => {
+    const g = seg('f1-' + I.k + '-g', null, [0, 1, 2], () => A.it[I.k].g, v => { A.it[I.k].g = v; update(); }, { aria: I.label + ' flex-grow' });
+    const s = seg('f1-' + I.k + '-s', null, [0, 1], () => A.it[I.k].s, v => { A.it[I.k].s = v; update(); }, { aria: I.label + ' flex-shrink' });
+    const b = seg('f1-' + I.k + '-b', null, ['auto', '0%', '120px', '240px'], () => A.it[I.k].b, v => { A.it[I.k].b = v; update(); }, { aria: I.label + ' flex-basis' });
+    ctlA.push(g, s, b);
+    return h('tr', null, h('td', null, '.' + I.k), h('td', null, g), h('td', null, s), h('td', null, b));
+  });
+  const table = h('div', { class: 'ftab-wrap' }, h('table', { class: 'ftab' },
+    h('thead', null, h('tr', null, h('th', null, ''), h('th', null, 'flex-grow'), h('th', null, 'flex-shrink'), h('th', null, 'flex-basis'))),
+    h('tbody', null, rows)));
+  const preset = (id, label, fn) => h('button', { type: 'button', class: 'btn mono', id: id, onclick: () => { fn(); update(); } }, label);
+  const presets = h('div', { class: 'presets' }, h('span', { class: 'ctl-l' }, 'Schnell:'),
+    preset('f1-pre-suche', 'Suche: flex: 1', () => { A.it = def(); A.it.suche = { g: 1, s: 1, b: '0%' }; }),
+    preset('f1-pre-starr', 'Starr wie Sidebar: Logo flex: 0 0 240px', () => { A.it = def(); A.it.logo = { g: 0, s: 0, b: '240px' }; A.it.suche = { g: 1, s: 1, b: '0%' }; }),
+    preset('f1-pre-none', 'flex: none (alle)', () => { ITEMS.forEach(I => { A.it[I.k] = { g: 0, s: 0, b: 'auto' }; }); }),
+    preset('f1-pre-reset', 'Standard (0 1 auto)', () => { A.it = def(); }));
+  const cW = range('f1-w', 'Breite .nav', 300, 1000, 10, () => A.w, v => { A.w = v; update(); });
+  ctlA.push(cW);
+
+  const logoSvg = '<svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="5" fill="currentColor" opacity=".25"/><path d="M7 17h12M9 9h8v8H9z" stroke="currentColor" stroke-width="2.2" fill="none"/></svg>';
+  const iLogo = h('div', { class: 'logo f1-it f1-logo k1', html: logoSvg + '<span>Logo</span>' });
+  const iSuche = h('div', { class: 'suche f1-it f1-suche' }, h('input', { type: 'search', id: 'f1-input', placeholder: 'Haltestelle suchen …', 'aria-label': 'Haltestelle suchen (Demo)' }));
+  const iBtn = h('div', { class: 'button f1-it k2' }, 'Anmelden');
+  const nav = h('div', { class: 'nav f1-nav' }, iLogo, iSuche, iBtn);
+  const mess = h('div', { class: 'f1-mess', 'aria-live': 'polite' });
+  const stageA = h('div', { class: 'stage', id: 'f1a-stage' }, nav, mess);
+  const codeA = CodePanel('code-flex1a', 'CSS · Navigationsleiste');
+  const cssA = styleTag('css-flex1a');
+  const expA = explain('<p><code>flex</code> ist die Kurzform für <code>flex-grow flex-shrink flex-basis</code>. <strong>basis</strong> ist die Startbreite, <strong>grow</strong> verteilt übrigen Platz, <strong>shrink</strong> nimmt Platz weg, wenn es eng wird. <code>flex: 1</code> heißt: Startbreite 0, dann den ganzen Rest nehmen.</p><p>Standard ist <code>0 1 auto</code>: nicht wachsen, schrumpfen erlaubt, Startbreite = Inhalt.</p>');
+
+  /* ---- Teil B ---- */
+  const cBW = range('f1b-w', 'Breite .karte', 220, 700, 10, () => B.w, v => { B.w = v; update(); });
+  const tMin = toggle('f1b-minw', '.text { min-width: 0 }', () => B.minw, v => { B.minw = v; update(); });
+  const tOvf = toggle('f1b-ovf', 'overflow: hidden', () => B.ovf, v => { B.ovf = v; update(); });
+  const tNow = toggle('f1b-nowrap', 'white-space: nowrap', () => B.nowrap, v => { B.nowrap = v; update(); });
+  const tEll = toggle('f1b-ell', 'text-overflow: ellipsis', () => B.ell, v => { B.ell = v; update(); });
+  ctlB.push(cBW, tMin, tOvf, tNow, tEll);
+  const titel = h('h4', { class: 'titel f1b-titel' }, 'Projektbesprechung Abfahrtsmonitor Karlsruhe mit allen Teams und Zwischenständen');
+  const textCol = h('div', { class: 'text' }, titel, h('p', { class: 'f1b-sub' }, 'Heute · 14:00 · Raum 204'));
+  const karte = h('div', { class: 'karte f1b-karte' }, h('div', { class: 'avatar f1b-avatar k2', 'aria-hidden': 'true' }, 'PB'), textCol);
+  const statusB = h('p', { class: 'stage-note', 'aria-live': 'polite' });
+  const stageB = h('div', { class: 'stage', id: 'f1b-stage' }, karte, statusB);
+  const codeB = CodePanel('code-flex1b', 'CSS · Karte mit langem Titel');
+  const cssB = styleTag('css-flex1b');
+  const expB = explain('<p>Flex-Items haben <code>min-width: auto</code>: Sie werden nie schmaler als ihr Inhalt. Mit <code>white-space: nowrap</code> ist der Inhalt eine einzige lange Zeile – die Textspalte schiebt sich über die Karte hinaus.</p><p><code>min-width: 0</code> erlaubt das Schrumpfen. Erst dann greifen <code>overflow: hidden</code> + <code>nowrap</code> + <code>text-overflow: ellipsis</code> und der Titel endet mit „…“. (<code>overflow: hidden</code> direkt auf <code>.text</code> hätte denselben Effekt wie <code>min-width: 0</code>.)</p>');
+
+  const partSeg = seg('f1-part', null, [['a', 'A · grow, shrink, basis'], ['b', 'B · der min-width-0-Trick']], () => part, v => { part = v; update(); }, { plain: true, aria: 'Teil wählen' });
+  const wA = work([h('div', { class: 'controls' }, h('div', { class: 'ctl' }, table)), h('div', { class: 'controls' }, presets, cW), stageA], [codeA.el, expA]);
+  const wB = work([h('div', { class: 'controls' }, cBW, tMin, tOvf, tNow, tEll), stageB], [codeB.el, expB]);
+  sec.append(h('div', { class: 'parts' }, partSeg), wA, wB);
+
+  function rulesA() {
+    const out = [{ sel: '.nav', decls: [['display', 'flex'], ['align-items', 'center'], ['gap', '12px'], ['width', A.w + 'px']] }];
+    ITEMS.forEach(I => {
+      const it = A.it[I.k], f = flexShort(it.g, it.s, it.b);
+      out.push({ sel: '.' + I.k, decls: [['flex', f[0], { note: f[1] }]] });
+    });
+    return out;
+  }
+  function rulesB() {
+    return [
+      { sel: '.karte', decls: [['display', 'flex'], ['align-items', 'center'], ['gap', '12px'], ['width', B.w + 'px']] },
+      { sel: '.avatar', decls: [['flex', 'none'], ['width', '48px'], ['height', '48px']] },
+      { sel: '.text', decls: [['min-width', '0', { off: !B.minw }]] },
+      { sel: '.titel', decls: [['overflow', 'hidden', { off: !B.ovf }], ['white-space', 'nowrap', { off: !B.nowrap }], ['text-overflow', 'ellipsis', { off: !B.ell }]] }
+    ];
+  }
+  function measureA() {
+    const nr = nav.getBoundingClientRect();
+    if (!nr.width) return;
+    mess.style.width = Math.max(nav.scrollWidth, A.w) + 'px';
+    mess.innerHTML = '';
+    [[iLogo, '.logo'], [iSuche, '.suche'], [iBtn, '.button']].forEach(p => {
+      const r = p[0].getBoundingClientRect();
+      mess.append(h('div', { style: 'left:' + (r.left - nr.left) + 'px;width:' + Math.max(r.width, 1) + 'px' }, Math.round(r.width) + ' px', h('span', null, p[1])));
+    });
+  }
+  function measureB() {
+    const kr = karte.getBoundingClientRect(), tr = textCol.getBoundingClientRect();
+    if (!kr.width) return;
+    const inner = kr.right - 14; /* Rahmen + Innenabstand */
+    const over = Math.round(tr.right - inner);
+    const cut = titel.scrollWidth > titel.clientWidth + 1;
+    let s = 'Textspalte: <strong>' + px(tr.width) + '</strong> · Karte: <strong>' + px(kr.width) + '</strong> → ';
+    s += over > 1 ? '<span class="warn">Textspalte ragt ' + over + ' px über die Karte hinaus</span>' : '<span class="okay">Textspalte passt in die Karte</span>';
+    if (B.ell && B.ovf && B.nowrap && cut) s += ' · Titel endet mit „…“';
+    statusB.innerHTML = s;
+  }
+  function update() {
+    partSeg.sync();
+    wA.hidden = part !== 'a'; wB.hidden = part !== 'b';
+    syncAll(ctlA); syncAll(ctlB);
+    const rA = rulesA(), rB = rulesB();
+    cssA.textContent = cssApplied(rA, '#f1a-stage');
+    cssB.textContent = cssApplied(rB, '#f1b-stage');
+    codeA.set([{ lang: 'css', lines: cssLines(rA) }]);
+    codeB.set([{ lang: 'css', lines: cssLines(rB) }]);
+    measureA(); measureB();
+  }
+  return { update: update, onShow: update, onResize: () => { measureA(); measureB(); } };
+}
+
+/* ======================================================================
+   Tab 3: Zentrieren
+   ====================================================================== */
+function tabZentrieren(sec) {
+  const S = { m: 'b', multi: false };
+  const M = {
+    a: { label: 'a) nichts', box: [], kind: [], note: 'Block-Layout: Das Kind steht oben links und ist so breit wie die Box.' },
+    b: { label: 'b) flex + justify/align', box: [['display', 'flex'], ['justify-content', 'center'], ['align-items', 'center']], kind: [],
+      note: '<code>justify-content</code> zentriert auf der Hauptachse (waagerecht), <code>align-items</code> auf der Querachse (senkrecht).' },
+    c: { label: 'c) grid + place-items', box: [['display', 'grid'], { c: '= align-items + justify-items' }, ['place-items', 'center']], kind: [],
+      note: '<code>place-items</code> setzt <code>align-items</code> und <code>justify-items</code>: Jedes Kind wird <strong>in seiner eigenen Zelle</strong> zentriert. Mit einem Kind ist die Zelle die ganze Box.' },
+    d: { label: 'd) grid + place-content', box: [['display', 'grid'], { c: '= align-content + justify-content' }, ['place-content', 'center']], kind: [],
+      note: '<code>place-content</code> setzt <code>align-content</code> und <code>justify-content</code>: Das <strong>ganze Raster</strong> schrumpft auf den Inhalt und wandert in die Mitte der Box.' },
+    e: { label: 'e) flex + place-content + place-items', box: [['display', 'flex'], { c: 'wirkt: justify-content (aus place-content)' }, ['place-content', 'center'], { c: 'wirkt: align-items (aus place-items)' }, ['place-items', 'center']], kind: [],
+      note: 'Funktioniert, aber nur zur Hälfte pro Zeile: In Flexbox wirkt <code>justify-content</code> aus <code>place-content</code> und <code>align-items</code> aus <code>place-items</code>. <code>justify-items</code> ignoriert Flexbox, <code>align-content</code> wirkt nur bei mehreren Zeilen (<code>flex-wrap: wrap</code>).' },
+    f: { label: 'f) flex + margin: auto', box: [['display', 'flex']], kind: [['margin', 'auto']],
+      note: 'In einem Flex-Container schlucken <code>auto</code>-Margins den freien Platz in beide Richtungen – das Kind landet in der Mitte. Bei mehreren Kindern bekommt jedes seinen Anteil.' }
+  };
+  const cM = seg('z-m', 'Methode', Object.keys(M).map(k => [k, M[k].label]), () => S.m, v => { S.m = v; update(); });
+  const tMulti = toggle('z-multi', 'Mehrere Kinder (3)', () => S.multi, v => { S.multi = v; update(); });
+  const kids = [h('div', { class: 'kind z-kind k1' }, 'Genau in der Mitte'), h('div', { class: 'kind z-kind k2' }, 'Zwei'), h('div', { class: 'kind z-kind k5' }, 'Drei – etwas länger')];
+  const box = h('div', { class: 'box z-box' }, kids);
+  const ov = h('div', { class: 'z-ov', 'aria-hidden': 'true' });
+  const stage = h('div', { class: 'stage', id: 'z-stage' }, h('div', { class: 'z-wrap' }, box, ov));
+  const note = h('p', { class: 'stage-note' });
+  const css = styleTag('css-zentrieren');
+  const code = CodePanel('code-zentrieren', 'CSS · .box und .kind');
+  const legend = h('div', { class: 'z-legend' },
+    h('div', null, h('code', null, 'place-items'), h('span', null, 'Kurzform für align-items + justify-items: wo jedes Kind in seiner Zelle sitzt.')),
+    h('div', null, h('code', null, 'place-content'), h('span', null, 'Kurzform für align-content + justify-content: wo der ganze Inhaltsblock im Container sitzt.')));
+  const exp = explain('<p>Schalte „Mehrere Kinder“ ein und vergleiche c) und d): Bei <code>place-items</code> werden die Zeilen auf die volle Höhe gestreckt und jedes Kind sitzt mittig in seiner Zeile – die Kinder verteilen sich. Bei <code>place-content</code> bleiben die Zeilen so klein wie ihr Inhalt und das Paket steht geschlossen in der Mitte. Die gestrichelten Rahmen zeigen die Grid-Zellen.</p>');
+  sec.append(work([h('div', { class: 'controls' }, cM, tMulti), stage, note], [code.el, legend, exp]));
+
+  function rules() {
+    const m = M[S.m];
+    const d = m.box.slice();
+    if (S.m === 'a') d.push({ c: 'keine Zentrierung' });
+    if (S.multi && S.m !== 'a') d.push(['gap', '8px']);
+    d.push(['height', '300px']);
+    const out = [{ sel: '.box', decls: d }];
+    if (m.kind.length) out.push({ sel: '.kind', decls: m.kind.slice() });
+    return out;
+  }
+  function drawCells() {
+    ov.innerHTML = '';
+    if (S.m !== 'c' && S.m !== 'd') return;
+    const cs = getComputedStyle(box);
+    const rows = cs.gridTemplateRows.split(/\s+/).map(parseFloat).filter(n => !isNaN(n));
+    const cols = cs.gridTemplateColumns.split(/\s+/).map(parseFloat).filter(n => !isNaN(n));
+    if (!rows.length || !cols.length) return;
+    const rg = parseFloat(cs.rowGap) || 0, cg = parseFloat(cs.columnGap) || 0;
+    const W = box.clientWidth, H = box.clientHeight;
+    const tH = rows.reduce((a, b) => a + b, 0) + rg * (rows.length - 1);
+    const tW = cols.reduce((a, b) => a + b, 0) + cg * (cols.length - 1);
+    const oy = S.m === 'd' ? (H - tH) / 2 : 0, ox = S.m === 'd' ? (W - tW) / 2 : 0;
+    let y = oy;
+    rows.forEach(rh => {
+      let x = ox;
+      cols.forEach(cw => { ov.append(h('div', { class: 'z-cell', style: 'left:' + x + 'px;top:' + y + 'px;width:' + cw + 'px;height:' + rh + 'px' }, rh >= 70 ? h('span', null, 'Zelle') : null)); x += cw + cg; });
+      y += rh + rg;
+    });
+  }
+  function update() {
+    cM.sync(); tMulti.sync();
+    kids[1].hidden = kids[2].hidden = !S.multi;
+    const r = rules();
+    css.textContent = cssApplied(r, '#z-stage');
+    code.set([{ lang: 'css', lines: cssLines(r) }]);
+    note.innerHTML = M[S.m].note;
+    drawCells();
+  }
+  return { update: update, onShow: update, onResize: drawCells };
+}
+
+/* ======================================================================
+   Tab 4: fr & Areas
+   ====================================================================== */
+function asciiAreas(rows, cw) {
+  const R = rows.length, C = rows[0].length, W = C * cw + 1, H = R * 2 + 1;
+  const g = Array.from({ length: H }, () => Array(W).fill(' '));
+  const nm = (r, c) => (r < 0 || c < 0 || r >= R || c >= C) ? null : rows[r][c];
+  for (let r = 0; r < R; r++) for (let b = 0; b <= C; b++) if (nm(r, b - 1) !== nm(r, b)) g[2 * r + 1][b * cw] = '|';
+  for (let rb = 0; rb <= R; rb++) for (let c = 0; c < C; c++) if (nm(rb - 1, c) !== nm(rb, c)) for (let x = c * cw + 1; x < c * cw + cw; x++) g[2 * rb][x] = '-';
+  for (let rb = 0; rb <= R; rb++) for (let b = 0; b <= C; b++) {
+    const y = 2 * rb, x = b * cw;
+    const up = y > 0 && g[y - 1][x] === '|', dn = y < H - 1 && g[y + 1][x] === '|';
+    const lf = x > 0 && g[y][x - 1] === '-', rt = x < W - 1 && g[y][x + 1] === '-';
+    if ((up || dn) && (lf || rt)) g[y][x] = '+';
+    else if (lf || rt) g[y][x] = '-';
+    else if (up || dn) g[y][x] = '|';
+  }
+  for (let r = 0; r < R; r++) {
+    let c = 0;
+    while (c < C) {
+      let e = c; while (e + 1 < C && rows[r][e + 1] === rows[r][c]) e++;
+      const n = rows[r][c];
+      const x0 = c * cw + 1, spanW = (e - c + 1) * cw - 1;
+      const st = x0 + Math.max(0, Math.floor((spanW - n.length) / 2));
+      for (let i = 0; i < n.length && st + i < W - 1; i++) g[2 * r + 1][st + i] = n[i];
+      c = e + 1;
+    }
+  }
+  return g.map(row => row.join('').replace(/\s+$/, ''));
+}
+function tabGrid(sec) {
+  let part = 'a';
+  const A = { tpl: '200px 1fr', w: 640 };
+  const GAP = 16;
+  const cTpl = seg('g-tpl', 'grid-template-columns', ['1fr 1fr 1fr', '1fr 2fr', '200px 1fr', '200px 1fr 1fr', '1fr 3fr'], () => A.tpl, v => { A.tpl = v; update(); });
+  const cW = range('g-w', 'Breite .raster', 400, 1000, 10, () => A.w, v => { A.w = v; update(); });
+  const ruler = h('div', { class: 'g-ruler', 'aria-hidden': 'true' });
+  const raster = h('div', { class: 'raster g-raster' });
+  const math = h('p', { class: 'g-math', 'aria-live': 'polite' });
+  const stageA = h('div', { class: 'stage', id: 'ga-stage' }, ruler, raster, math);
+  const cssA = styleTag('css-grid-a');
+  const codeA = CodePanel('code-grid-a', 'CSS · .raster');
+  const expA = explain('<p><code>fr</code> heißt „Anteil am freien Platz“. Der Browser zieht zuerst feste Breiten (px) und alle Lücken (gap) von der Containerbreite ab. Was übrig bleibt, wird nach den fr-Zahlen aufgeteilt: Bei <code>1fr 2fr</code> bekommt die zweite Spalte doppelt so viel wie die erste.</p>');
+
+  const B = { lay: 'links' };
+  const LAY = {
+    links: { label: 'Nav links', cols: '180px 1fr 200px', rows: 'auto 1fr auto', areas: [['header', 'header', 'header'], ['nav', 'main', 'aside'], ['footer', 'footer', 'footer']] },
+    rechts: { label: 'Nav rechts', cols: '200px 1fr 180px', rows: 'auto 1fr auto', areas: [['header', 'header', 'header'], ['aside', 'main', 'nav'], ['footer', 'footer', 'footer']] },
+    ohne: { label: 'Ohne Aside', cols: '180px 1fr', rows: 'auto 1fr auto', areas: [['header', 'header'], ['nav', 'main'], ['footer', 'footer']], hide: 'aside' },
+    handy: { label: 'Handy (eine Spalte)', cols: '1fr', rows: 'auto auto 1fr auto auto', areas: [['header'], ['nav'], ['main'], ['aside'], ['footer']] }
+  };
+  const cLay = seg('g-lay', 'Layout', Object.keys(LAY).map(k => [k, LAY[k].label]), () => B.lay, v => { B.lay = v; update(); }, { plain: true });
+  const EL = ['header', 'nav', 'main', 'aside', 'footer'];
+  const COLORS = { header: 'k1', nav: 'k2', main: 'k3', aside: 'k6', footer: 'k4' };
+  const seite = h('div', { class: 'seite ga-seite' }, EL.map((n, i) => h(n, { class: COLORS[n] }, h('b', null, n), h('small', null, 'HTML-Position ' + (i + 1)))));
+  const stageB = h('div', { class: 'stage', id: 'gb-stage' }, seite);
+  const cssB = styleTag('css-grid-b');
+  const codeB = CodePanel('code-grid-b', 'CSS + HTML · Seitenlayout');
+  const expB = explain('<p><code>grid-template-areas</code> malt das Layout als Text: Jeder String ist eine Zeile, jedes Wort eine Zelle. Gleiche Namen nebeneinander verschmelzen zu einer Fläche. Die Elemente melden sich mit <code>grid-area</code> bei ihrer Fläche an.</p><p>Die <strong>HTML-Reihenfolge ändert sich nie</strong> (siehe Nummern) – nur das CSS ordnet um. Für Screenreader und Tastatur bleibt die HTML-Reihenfolge maßgeblich.</p>');
+
+  const partSeg = seg('g-part', null, [['a', 'A · fr rechnen'], ['b', 'B · grid-template-areas']], () => part, v => { part = v; update(); }, { plain: true, aria: 'Teil wählen' });
+  const wA = work([h('div', { class: 'controls' }, cTpl, cW), stageA], [codeA.el, expA]);
+  const wB = work([h('div', { class: 'controls' }, cLay), stageB], [codeB.el, expB]);
+  sec.append(h('div', { class: 'parts' }, partSeg), wA, wB);
+
+  function rulesA() {
+    return [{ sel: '.raster', decls: [['display', 'grid'], ['grid-template-columns', A.tpl], ['gap', GAP + 'px'], ['width', A.w + 'px']] }];
+  }
+  function mathA() {
+    const toks = A.tpl.split(/\s+/);
+    const n = toks.length;
+    let fixed = [], fr = 0;
+    toks.forEach(t => { if (/px$/.test(t)) fixed.push(parseFloat(t)); else fr += parseFloat(t); });
+    const gaps = (n - 1) * GAP;
+    const free = A.w - fixed.reduce((a, b) => a + b, 0) - gaps;
+    const one = free / fr;
+    let s = 'Freier Platz: ' + A.w + (fixed.length ? ' − ' + fixed.join(' − ') : '') + (n > 1 ? ' − ' + (n - 1) + ' × ' + GAP + ' (gap)' : '') + ' = <span class="res">' + fmt(free, 2) + ' px</span>';
+    s += '<br>→ 1fr = ' + fmt(free, 2) + ' ÷ ' + fmt(fr) + ' = <span class="res">' + fmt(one, 2) + ' px</span>';
+    const multi = toks.filter(t => /fr$/.test(t) && parseFloat(t) !== 1);
+    [...new Set(multi)].forEach(t => { s += ' · ' + t + ' = <span class="res">' + fmt(one * parseFloat(t), 2) + ' px</span>'; });
+    math.innerHTML = s;
+  }
+  function measureA() {
+    const cs = getComputedStyle(raster);
+    const tracks = cs.gridTemplateColumns;
+    ruler.style.gridTemplateColumns = tracks;
+    ruler.style.columnGap = cs.columnGap;
+    ruler.style.width = A.w + 'px';
+    const vals = tracks.split(/\s+/);
+    const toks = A.tpl.split(/\s+/);
+    ruler.innerHTML = '';
+    vals.forEach((v, i) => ruler.append(h('div', null, h('b', null, fmt(parseFloat(v), 2) + ' px'), toks[i] || '')));
+  }
+  function rulesB() {
+    const L = LAY[B.lay];
+    const C = L.areas[0].length;
+    const maxLen = Array.from({ length: C }, (_, c) => Math.max(...L.areas.map(r => r[c].length)));
+    const strs = L.areas.map(r => '"' + r.map((n, c) => n.padEnd(maxLen[c])).join(' ').replace(/\s+$/, '') + '"');
+    const sketch = asciiAreas(L.areas, C === 1 ? 16 : 9);
+    const out = [{ c: sketch }, { sel: '.seite', decls: [['display', 'grid'], ['grid-template-columns', L.cols], ['grid-template-rows', L.rows], ['grid-template-areas', strs], ['gap', '8px'], ['height', '340px']] }];
+    EL.forEach(n => {
+      const pad = n.padEnd(6);
+      if (L.hide === n) {
+        out.push({ c: ['aside hat keine Fläche mehr: ausblenden.', 'Sonst landet es in einer neuen,', 'impliziten Zeile und Spalte.'] });
+        out.push({ sel: pad, inline: true, decls: [['display', 'none']] });
+      } else out.push({ sel: pad, inline: true, decls: [['grid-area', n]] });
+    });
+    return out;
+  }
+  const HTML_B = ['<div class="seite">', '  <header>…</header>', '  <nav>…</nav>', '  <main>…</main>', '  <aside>…</aside>', '  <footer>…</footer>', '</div>'];
+  function update() {
+    partSeg.sync();
+    wA.hidden = part !== 'a'; wB.hidden = part !== 'b';
+    syncAll([cTpl, cW, cLay]);
+    const n = A.tpl.split(/\s+/).length;
+    if (raster.children.length !== n) { raster.innerHTML = ''; for (let i = 0; i < n; i++) raster.append(h('div', { class: 'g-col k' + [1, 2, 5, 6][i % 4] })); }
+    A.tpl.split(/\s+/).forEach((t, i) => { raster.children[i].textContent = t; });
+    const rA = rulesA();
+    cssA.textContent = cssApplied(rA, '#ga-stage');
+    codeA.set([{ lang: 'css', lines: cssLines(rA) }]);
+    mathA(); measureA();
+    const rB = rulesB();
+    cssB.textContent = cssApplied(rB, '#gb-stage');
+    codeB.set([{ label: 'CSS', lang: 'css', lines: cssLines(rB) }, { label: 'HTML (bleibt immer gleich)', lang: 'html', lines: HTML_B.map(t => ({ t: t })) }]);
+  }
+  return { update: update, onShow: update, onResize: measureA };
+}
+
+/* ======================================================================
+   Tab 5: Responsive
+   ====================================================================== */
+function tabResponsive(sec) {
+  let part = 'mq';
+  const S = { w: 375 };
+  const FH = 440;
+  const cDev = seg('r-dev', 'Gerät', [[375, 'Handy 375'], [768, 'Tablet 768'], [1280, 'Laptop 1280']], () => S.w, v => { S.w = v; update(); }, { plain: true });
+  const cW = range('r-w', 'Fensterbreite', 320, 1400, 1, () => S.w, v => { S.w = v; update(); });
+  const chips = { base: h('span', { class: 'r-chip on' }, 'Basis (Handy)'), m640: h('span', { class: 'r-chip' }, '@media (width >= 640px)'), m1024: h('span', { class: 'r-chip' }, '@media (width >= 1024px)') };
+  const info = h('p', { class: 'stage-note', 'aria-live': 'polite' });
+  const RULES = [
+    { c: 'Mobile first: Basis = Handy' },
+    { sel: '.karten', decls: [['display', 'grid'], ['grid-template-columns', '1fr'], ['gap', '12px']] },
+    { sel: '.nav', inline: true, decls: [['display', 'none']] },
+    { sel: '.burger', inline: true, decls: [['display', 'block']] },
+    { blank: true },
+    { at: '@media (width >= 640px)', tag: 'm640', rules: [{ sel: '.karten', decls: [['grid-template-columns', 'repeat(2, 1fr)']] }] },
+    { blank: true },
+    { at: '@media (width >= 1024px)', tag: 'm1024', rules: [
+      { sel: '.karten', decls: [['grid-template-columns', 'repeat(3, 1fr)']] },
+      { sel: '.nav', inline: true, decls: [['display', 'flex']] },
+      { sel: '.burger', inline: true, decls: [['display', 'none']] }] }
+  ];
+  const BASE = '*{box-sizing:border-box}body{margin:0;font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1f1f1f;background:#f4f5fb}' +
+    '.kopf{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;background:#0000ff;color:#fff}' +
+    '.marke{font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px}.marke i{width:12px;height:12px;border-radius:50%;background:#fff;display:inline-block}' +
+    '.nav{gap:22px}.nav a{color:#fff;text-decoration:none;font-weight:600}' +
+    '.burger{width:42px;height:38px;border:2px solid rgba(255,255,255,.75);border-radius:6px;background:transparent;padding:0;position:relative;color:#fff}' +
+    '.burger span,.burger span::before,.burger span::after{position:absolute;left:9px;right:9px;height:2.5px;background:#fff;content:""}' +
+    '.burger span{top:16px}.burger span::before{top:-7px;left:0;right:0}.burger span::after{top:7px;left:0;right:0}' +
+    'main{padding:16px}h1{font-size:22px;margin:2px 0}.stand{margin:0 0 14px;color:#4a4e6c;font-size:14px}' +
+    '.abf{background:#fff;border:1px solid #dcdff2;border-radius:8px;padding:12px 14px;display:grid;grid-template-columns:auto 1fr auto;gap:4px 12px;align-items:center}' +
+    '.linie{font-weight:700;background:#612ff8;color:#fff;border-radius:4px;padding:2px 8px;font-size:14px}.ziel{font-weight:600}' +
+    '.min{font-weight:700;color:#0000ff;font-variant-numeric:tabular-nums;white-space:nowrap}.gleis{grid-column:2/4;color:#4a4e6c;font-size:14px}';
+  const DEPS = [['S1', 'Bad Herrenalb', '4 min', 'Gleis 2'], ['S11', 'Ittersbach', '6 min', 'Gleis 2'], ['S2', 'Rheinstetten', '9 min', 'Gleis 1'], ['S5', 'Pforzheim Hbf', '11 min', 'Gleis 4'], ['S4', 'Öhringen', '14 min', 'Gleis 3'], ['1', 'Durlach', '17 min', 'Bstg. A']];
+  const BODY = '<header class="kopf"><div class="marke"><i></i>Abfahrtsmonitor</div><nav class="nav"><a href="#">Abfahrten</a><a href="#">Linien</a><a href="#">Störungen</a></nav><button class="burger" id="burger" type="button" aria-label="Menü"><span></span></button></header>' +
+    '<main><h1>Karlsruhe Hbf</h1><p class="stand">Stand 14:32 · Echtzeit</p><div class="karten">' +
+    DEPS.map(d => '<div class="abf"><span class="linie">' + d[0] + '</span><span class="ziel">' + d[1] + '</span><span class="min">' + d[2] + '</span><span class="gleis">' + d[3] + '</span></div>').join('') + '</div></main>';
+  const frame = h('iframe', { id: 'r-frame', title: 'Mini-Seite Abfahrtsmonitor', height: FH });
+  frame.srcdoc = frameDoc('<style>' + BASE + '</style><style id="live">' + cssApplied(RULES, null) + '</style>', BODY,
+    "document.addEventListener('click',function(e){if(e.target.closest('a'))e.preventDefault();});");
+  const inner = h('div', { class: 'r-inner' }, frame);
+  const outer = h('div', { class: 'r-outer' }, inner);
+  const stageMQ = h('div', { class: 'stage', id: 'r-stage' }, h('div', { class: 'r-chips' }, chips.base, chips.m640, chips.m1024), outer, info);
+  const codeMQ = CodePanel('code-resp-mq', 'CSS · Abfahrtsmonitor (mobile first)');
+  codeMQ.el.dataset.static = '1';
+  const expMQ = explain('<p>Die Mini-Seite läuft in einem eigenen Fenster (iframe). Seine Breite ist die Viewport-Breite, also reagieren echte Media Queries darauf. <strong>Mobile first</strong>: Das CSS ohne Media Query gilt für alle, jede <code>@media (width >= …)</code> legt ab einer Mindestbreite etwas darauf. Aktive Blöcke sind im Code markiert.</p>');
+
+  /* Container Query */
+  const C = { side: 200 };
+  const cSide = range('cq-side', 'Breite der Seitenleiste', 200, 560, 10, () => C.side, v => { C.side = v; update(); });
+  const tramSvg = '<svg viewBox="0 0 120 60" aria-hidden="true"><rect x="6" y="10" width="108" height="36" rx="8" fill="#0000ff"/><rect x="14" y="17" width="20" height="13" rx="2" fill="#fff"/><rect x="40" y="17" width="20" height="13" rx="2" fill="#fff"/><rect x="66" y="17" width="20" height="13" rx="2" fill="#fff"/><rect x="92" y="17" width="14" height="22" rx="2" fill="#c9ccff"/><circle cx="28" cy="50" r="5" fill="#1f1f1f"/><circle cx="92" cy="50" r="5" fill="#1f1f1f"/><path d="M50 10 L60 2 L70 10" stroke="#1f1f1f" stroke-width="2.5" fill="none"/></svg>';
+  const card = () => h('article', { class: 'karte cq-karte' }, h('div', { class: 'bild cq-bild', html: tramSvg }), h('div', null, h('h4', null, 'S1 → Bad Herrenalb'), h('p', null, 'Gleis 2 · in 4 min · barrierefrei')));
+  const labSide = h('p', { class: 'cq-lab' }), labMain = h('p', { class: 'cq-lab' });
+  const colSide = h('aside', { class: 'spalte cq-col cq-side' }, labSide, card());
+  const colMain = h('section', { class: 'spalte cq-col cq-main' }, labMain, card());
+  const stageCQ = h('div', { class: 'stage', id: 'cq-stage' }, h('div', { class: 'cq-wrap' }, colSide, colMain));
+  const CQ_RULES = [
+    { sel: '.spalte', decls: [['container-type', 'inline-size']] },
+    { sel: '.karte', decls: [['display', 'grid'], ['grid-template-columns', '1fr'], ['gap', '12px']] },
+    { blank: true },
+    { at: '@container (width >= 420px)', tag: 'cq', rules: [{ sel: '.karte', decls: [['grid-template-columns', '140px 1fr']] }] }
+  ];
+  const cssCQ = styleTag('css-resp-cq');
+  cssCQ.textContent = cssApplied(CQ_RULES, '#cq-stage');
+  const codeCQ = CodePanel('code-resp-cq', 'CSS · Karte mit Container Query');
+  const expCQ = explain('<p><strong>Media Query fragt das Fenster, Container Query fragt den Platz der Komponente.</strong> Beide Karten haben dasselbe HTML und CSS. <code>container-type: inline-size</code> macht jede Spalte zum Container; <code>@container (width >= 420px)</code> prüft die Inhaltsbreite <em>dieser</em> Spalte. Zieh die Seitenleiste breit: Die Karten tauschen ihr Layout, obwohl sich das Fenster nicht ändert.</p>');
+
+  const partSeg = seg('r-part', null, [['mq', 'Media Query'], ['cq', 'Container Query']], () => part, v => { part = v; update(); }, { plain: true, aria: 'Teil wählen' });
+  const wMQ = work([h('div', { class: 'controls' }, cDev, cW), stageMQ], [codeMQ.el, expMQ]);
+  const wCQ = work([h('div', { class: 'controls' }, cSide), stageCQ], [codeCQ.el, expCQ]);
+  sec.append(h('div', { class: 'parts' }, partSeg), wMQ, wCQ);
+
+  function fit() {
+    const cs = getComputedStyle(stageMQ);
+    const avail = stageMQ.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    if (avail <= 0) return;
+    const s = Math.min(1, avail / S.w);
+    frame.style.width = S.w + 'px';
+    inner.style.width = S.w + 'px';
+    inner.style.transform = 'scale(' + s + ')';
+    outer.style.width = (S.w * s) + 'px';
+    outer.style.height = (FH * s) + 'px';
+    const act = S.w >= 1024 ? '3 Spalten, Navigation sichtbar' : S.w >= 640 ? '2 Spalten, Hamburger-Menü' : '1 Spalte, Hamburger-Menü';
+    info.innerHTML = 'Viewport im Rahmen: <strong>' + S.w + ' px</strong> breit · angezeigt mit ' + Math.round(s * 100) + ' % · ' + act;
+  }
+  function measureCQ() {
+    [[colSide, labSide], [colMain, labMain]].forEach(p => {
+      const cs = getComputedStyle(p[0]);
+      const w = p[0].clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      if (w <= 0) return;
+      p[1].innerHTML = (p[0] === colSide ? 'Seitenleiste' : 'Hauptbereich') + ': <b>' + Math.round(w) + ' px</b> → ' + (w >= 420 ? 'nebeneinander' : 'gestapelt');
+    });
+  }
+  function update() {
+    partSeg.sync();
+    wMQ.hidden = part !== 'mq'; wCQ.hidden = part !== 'cq';
+    syncAll([cDev, cW, cSide]);
+    const active = new Set();
+    const dim = new Set();
+    (S.w >= 640 ? active : dim).add('m640');
+    (S.w >= 1024 ? active : dim).add('m1024');
+    chips.m640.classList.toggle('on', S.w >= 640);
+    chips.m1024.classList.toggle('on', S.w >= 1024);
+    codeMQ.set([{ lang: 'css', lines: cssLines(RULES) }], { active: active, dim: dim });
+    fit();
+    colSide.style.width = C.side + 'px';
+    codeCQ.set([{ lang: 'css', lines: cssLines(CQ_RULES) }, { label: 'HTML (zweimal dieselbe Karte)', lang: 'html', lines: ['<aside class="spalte">', '  <article class="karte">…</article>', '</aside>', '<section class="spalte">', '  <article class="karte">…</article>', '</section>'].map(t => ({ t: t })) }]);
+    measureCQ();
+  }
+  return { update: update, onShow: update, onResize: () => { fit(); measureCQ(); } };
+}
+
+/* ======================================================================
+   Tab 6: 100dvh
+   ====================================================================== */
+function tabDvh(sec) {
+  const S = { bars: true };
+  const SCREEN = 440, URL_FULL = 52, URL_MINI = 26, TOOLS = 44;
+  const LVH = SCREEN - URL_MINI, SVH = SCREEN - URL_FULL - TOOLS;
+  const cBars = seg('dv-bars', 'Browser-Leisten', [[true, 'eingeblendet (Seite oben)'], [false, 'ausgeblendet (gescrollt)']], () => S.bars, v => { S.bars = v; update(); }, { plain: true });
+  function phone(kind) {
+    const url = h('div', { class: 'dv-url' }, h('span', { class: 'pill' }, 'abfahrt.example'));
+    const tools = h('div', { class: 'dv-tools', 'aria-hidden': 'true' }, h('i'), h('i'), h('i'), h('i'));
+    const seite = h('div', { class: 'dv-seite' }, h('h5', null, 'Willkommen'), h('p', null, 'Startbildschirm mit ' + (kind === 'vh' ? 'min-height: 100vh' : 'min-height: 100dvh') + '. Der Button soll unten sichtbar sein.'), h('div', { class: 'cta' }, 'Ticket kaufen'));
+    const sicht = h('div', { class: 'dv-sicht', 'aria-hidden': 'true' }, h('span', null, 'sichtbar'));
+    const mess = h('div', { class: 'dv-mess', 'aria-live': 'polite' });
+    const col = h('div', { class: 'dv-col' }, h('h4', null, 'min-height: 100' + kind), h('div', { class: 'phone' }, h('div', { class: 'screen' }, url, seite, sicht, tools)), mess);
+    return { col: col, url: url, tools: tools, seite: seite, sicht: sicht, mess: mess, kind: kind };
+  }
+  const P = [phone('vh'), phone('dvh')];
+  const stage = h('div', { class: 'stage', id: 'dv-stage' }, h('div', { class: 'dv-phones' }, P[0].col, P[1].col));
+  const code = CodePanel('code-dvh', 'CSS · zwei Startseiten');
+  const units = h('div', { class: 'dv-units' },
+    h('div', null, h('code', null, 'vh'), h('span', null, 'in mobilen Browsern der größte mögliche Viewport (wie lvh) – ändert sich nicht.')),
+    h('div', null, h('code', null, 'dvh'), h('span', null, 'der aktuell sichtbare Bereich – ändert sich, wenn die Leisten beim Scrollen ein- und ausfahren.')),
+    h('div', null, h('code', null, 'svh'), h('span', null, 'kleinster Viewport (Leisten sichtbar), stabil.')),
+    h('div', null, h('code', null, 'lvh'), h('span', null, 'größter Viewport (Leisten eingefahren), stabil.')));
+  const exp = explain('<p>Links passt die Seite nur, wenn die Leisten weg sind. Sind sie eingeblendet (z. B. direkt nach dem Laden), ist <code>100vh</code> höher als der sichtbare Bereich und der Button verschwindet hinter der unteren Leiste. Rechts folgt <code>100dvh</code> immer dem sichtbaren Bereich.</p><p>Simulation mit Beispielmaßen: Am Desktop gibt es keine einfahrbaren Leisten, dort sind <code>vh</code> und <code>dvh</code> gleich groß.</p>');
+  sec.append(work([h('div', { class: 'controls' }, cBars), stage], [code.el, units, exp]));
+
+  function update() {
+    cBars.sync();
+    const top = S.bars ? URL_FULL : URL_MINI;
+    const visible = S.bars ? SVH : LVH;
+    const dvh = visible;
+    P.forEach(p => {
+      const hgt = p.kind === 'vh' ? LVH : dvh;
+      p.url.style.height = top + 'px';
+      p.url.classList.toggle('mini', !S.bars);
+      p.tools.classList.toggle('weg', !S.bars);
+      p.seite.style.top = top + 'px';
+      p.seite.style.height = hgt + 'px';
+      p.sicht.style.top = top + 'px';
+      p.sicht.style.height = visible + 'px';
+      const hidden = hgt - visible;
+      p.mess.innerHTML = 'Höhe: ' + hgt + ' px · sichtbar: ' + visible + ' px<br>' + (hidden > 0 ? '<span class="warn">' + hidden + ' px verdeckt – Button weg</span>' : '<span class="okay">passt genau</span>');
+    });
+    const r = [
+      { sel: '.start-links', decls: [['min-height', '100vh', { note: 'jetzt ' + LVH + ' px' }]] },
+      { sel: '.start-rechts', decls: [['min-height', '100dvh', { note: 'jetzt ' + dvh + ' px' }]] },
+      { blank: true },
+      { c: ['Simulation (Bildschirm ' + SCREEN + ' px hoch):', 'lvh = ' + LVH + ' px  (Leisten eingefahren)', 'svh = ' + SVH + ' px  (Leisten sichtbar)', 'dvh = ' + dvh + ' px  (gerade sichtbar)', 'vh  = wie lvh'] }
+    ];
+    code.set([{ lang: 'css', lines: cssLines(r) }]);
+  }
+  return { update: update, onShow: update };
+}
+
+/* ======================================================================
+   Tab 7: Variablen
+   ====================================================================== */
+function tabVariablen(sec) {
+  const S = { marke: '#0000ff', radius: 8, abstand: 16, theme: 'hell' };
+  const colorIn = h('input', { type: 'color', id: 'v-marke', value: S.marke, oninput: e => { S.marke = e.target.value.toLowerCase(); update(); } });
+  const cColor = h('div', { class: 'ctl v-ctl' }, h('label', { class: 'ctl-l', for: 'v-marke' }, '--marke'), colorIn);
+  cColor.sync = () => { if (colorIn.value !== S.marke) colorIn.value = S.marke; };
+  const cR = range('v-radius', '--radius', 0, 28, 1, () => S.radius, v => { S.radius = v; update(); });
+  const cA = range('v-abstand', '--abstand', 4, 32, 1, () => S.abstand, v => { S.abstand = v; update(); });
+  const cT = seg('v-theme', 'data-demo-theme', [['hell', 'hell'], ['dunkel', 'dunkel']], () => S.theme, v => { S.theme = v; update(); });
+  const swatches = h('div', { class: 'presets' }, h('span', { class: 'ctl-l' }, 'Marke:'),
+    [['#0000ff', 'TAISC-Blau'], ['#612ff8', 'Lila'], ['#0b7a4b', 'Grün'], ['#c2410c', 'Orange']].map(c =>
+      h('button', { type: 'button', class: 'btn small', id: 'v-sw-' + c[0].slice(1), onclick: () => { S.marke = c[0]; update(); } }, c[1])));
+  const ctls = [cColor, cR, cA, cT];
+  const BASE = 'body{margin:0;padding:20px;font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;transition:background .2s,color .2s}' +
+    '.wrap{display:grid;gap:18px;max-width:560px}.reihe{display:flex;flex-wrap:wrap;gap:12px}' +
+    '.knopf{border:0;font:inherit;font-weight:700;cursor:pointer}.karte h3{margin:0 0 4px;font-size:19px}.karte p{margin:0 0 12px}';
+  const BODY = '<div class="wrap"><div class="reihe"><button class="knopf" id="d-kaufen" type="button">Ticket kaufen</button><button class="knopf leise" id="d-merken" type="button">Merken</button><button class="knopf" id="d-teilen" type="button">Teilen</button></div>' +
+    '<article class="karte"><h3>S1 → Bad Herrenalb</h3><p>Gleis 2 · in 4 min · barrierefrei</p><button class="knopf" id="d-details" type="button">Details</button></article></div>';
+  function rules() {
+    return [
+      { sel: ':root', decls: [['--marke', S.marke], ['--radius', S.radius + 'px'], ['--abstand', S.abstand + 'px'], ['--flaeche', '#ffffff'], ['--text', '#1f1f1f']] },
+      { sel: '[data-demo-theme="dunkel"]', decls: [['--flaeche', '#15172b'], ['--text', '#f1f2ff']] },
+      { sel: 'body', decls: [['background', 'var(--flaeche)'], ['color', 'var(--text)']] },
+      { sel: '.knopf', decls: [['background', 'var(--marke)'], ['color', '#ffffff'], ['border-radius', 'var(--radius)'], ['padding', 'calc(var(--abstand) / 2) var(--abstand)']] },
+      { sel: '.knopf.leise', decls: [['background', 'transparent'], ['color', 'var(--text)'], ['border', '2px solid var(--marke)']] },
+      { sel: '.karte', decls: [['border', '2px solid var(--marke)'], ['border-radius', 'var(--radius)'], ['padding', 'var(--abstand)']] },
+      { sel: '.karte h3', decls: [{ c: '--titel gibt es nicht → Ersatzwert' }, ['color', 'var(--titel, var(--marke))']] }
+    ];
+  }
+  const frame = h('iframe', { id: 'v-frame', title: 'Demo mit CSS-Variablen' });
+  frame.srcdoc = frameDoc('<style>' + BASE + '</style><style id="live">' + cssApplied(rules(), null) + '</style>', BODY,
+    "document.addEventListener('click',function(e){e.preventDefault();});");
+  frame.addEventListener('load', () => post());
+  const stage = h('div', { class: 'stage', id: 'v-stage' }, h('div', { class: 'v-outer' }, frame));
+  const code = CodePanel('code-variablen', 'CSS · eine Quelle, viele Stellen');
+  const exp = explain('<p>Namen mit <code>--</code> sind <strong>Custom Properties</strong> (CSS-Variablen). Man legt sie z. B. auf <code>:root</code> fest; sie <strong>erben</strong> wie <code>color</code> an alle Kinder. Gelesen werden sie mit <code>var(--name, Ersatzwert)</code> – der Ersatzwert gilt, wenn die Variable nicht gesetzt ist.</p><p>Ändere <code>--marke</code>: Eine Zeile im Code ändert sich, aber alle markierten Stellen färben sich mit. Für das dunkle Schema werden nur die Variablen neu belegt, die Regeln bleiben gleich. Die Demo läuft in einem eigenen Dokument, darum ist <code>:root</code> hier wirklich das <code>&lt;html&gt;</code>-Element.</p>');
+  sec.append(work([h('div', { class: 'controls' }, cColor, cR, cA, cT), swatches, stage], [code.el, exp]));
+  function post() {
+    try { frame.contentWindow.postMessage({ css: cssApplied(rules(), null), rootAttr: { 'data-demo-theme': S.theme } }, '*'); } catch (e) {}
+  }
+  function update() {
+    syncAll(ctls);
+    post();
+    code.set([
+      { label: 'HTML', lang: 'html', lines: [{ t: '<html data-demo-theme="' + S.theme + '">' }] },
+      { label: 'CSS', lang: 'css', lines: cssLines(rules()) }
+    ], { uses: '--marke' });
+  }
+  return { update: update, onShow: update };
+}
+
+/* ======================================================================
+   Tab 8: Tailwind vs. CSS
+   ====================================================================== */
+function tabTailwind(sec) {
+  const DEFAULT_CLS = 'rounded-xl bg-slate-100 p-4 hover:bg-slate-200 md:p-6';
+  const S = { cls: DEFAULT_CLS, w: 375, view: 'css', tw: 'laden' };
+  const FH = 130;
+  const HTML_CSS = [
+    '<article class="karte">',
+    '  <div class="kopf">',
+    '    <h3 class="titel">S1 → Bad Herrenalb</h3>',
+    '    <span class="badge">in 4 min</span>',
+    '  </div>',
+    '  <p class="info">Gleis 2, barrierefrei</p>',
+    '</article>'];
+  const CSS_RULES = [
+    { sel: '.karte', decls: [['padding', '1rem'], ['border-radius', '0.75rem'], { c: 'slate-100' }, ['background-color', 'oklch(96.8% 0.007 247.896)']] },
+    { sel: '.karte:hover', decls: [{ c: 'slate-200' }, ['background-color', 'oklch(92.9% 0.013 255.508)']] },
+    { at: '@media (width >= 48rem)', rules: [{ sel: '.karte', decls: [['padding', '1.5rem']] }] },
+    { sel: '.kopf', decls: [['display', 'flex'], ['align-items', 'center'], ['justify-content', 'space-between'], ['gap', '0.75rem']] },
+    { sel: '.titel', decls: [['font-size', '1.125rem'], ['line-height', '1.75rem'], ['font-weight', '600']] },
+    { sel: '.badge', decls: [['border-radius', '9999px'], { c: 'blue-700' }, ['background-color', 'oklch(48.8% 0.243 264.376)'], ['padding', '0.125rem 0.5rem'], ['font-size', '0.75rem'], ['line-height', '1rem'], ['font-weight', '600'], ['color', '#ffffff']] },
+    { sel: '.info', decls: [['margin-top', '0.25rem'], ['font-size', '0.875rem'], ['line-height', '1.25rem'], { c: 'slate-600' }, ['color', 'oklch(44.6% 0.043 257.281)']] }
+  ];
+  const twHTML = cls => [
+    '<article class="' + cls + '">',
+    '  <div class="flex items-center justify-between gap-3">',
+    '    <h3 class="text-lg font-semibold">S1 → Bad Herrenalb</h3>',
+    '    <span class="rounded-full bg-blue-700 px-2 py-0.5',
+    '                 text-xs font-semibold text-white">in 4 min</span>',
+    '  </div>',
+    '  <p class="mt-1 text-sm text-slate-600">Gleis 2, barrierefrei</p>',
+    '</article>'];
+  /* Gemeinsame Grundlage beider Rahmen: Tailwinds Preflight-Reset und Standardschrift */
+  const RESET = '*,::before,::after{box-sizing:border-box;margin:0;padding:0;border:0 solid}' +
+    'html{line-height:1.5;font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";-webkit-text-size-adjust:100%}' +
+    'h3{font-size:inherit;font-weight:inherit}';
+  const FRAME_BODY = 'body{padding:16px;background:#ffffff;color:#000000}';
+  const cssFrame = h('iframe', { id: 'tw-frame-css', title: 'Karte mit handgeschriebenem CSS', height: FH });
+  cssFrame.srcdoc = frameDoc('<style>' + RESET + FRAME_BODY + '</style><style id="live">' + cssApplied(CSS_RULES, null) + '</style>', HTML_CSS.join('\n'));
+  const twFrame = h('iframe', { id: 'tw-frame-tw', title: 'Karte mit Tailwind-Klassen', height: FH });
+  const TW_SCRIPT =
+    "var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11';" +
+    "s.onerror=function(){parent.postMessage({tw:'fehler'},'*');};document.head.appendChild(s);" +
+    "var t0=Date.now();(function poll(){var p=document.getElementById('probe');if(p&&getComputedStyle(p).display==='none'){parent.postMessage({tw:'ok'},'*');return;}if(Date.now()-t0<8000)setTimeout(poll,150);})();";
+  twFrame.srcdoc = frameDoc('<style>' + FRAME_BODY + '#probe{position:absolute;left:-9999px}</style>',
+    twHTML(DEFAULT_CLS).join('\n').replace('<article class=', '<article id="tw-card" class=') + '<div id="probe" class="hidden">.</div>', TW_SCRIPT);
+  twFrame.addEventListener('load', () => postCls());
+  const offline = h('div', { class: 'tw-offline', role: 'status', hidden: true }, 'Tailwind konnte nicht geladen werden (offline?). Das Skript kommt von cdn.jsdelivr.net – ohne Internet bleibt diese Karte ungestylt.');
+  const mkCell = (title, sub, frame, extra) => {
+    const inner = h('div', { class: 'tw-inner' }, frame);
+    const outer = h('div', { class: 'tw-outer' }, inner, extra || null);
+    return { el: h('div', { class: 'tw-cell' }, h('h4', null, h('span', null, title), sub), outer), inner: inner, outer: outer, frame: frame };
+  };
+  const cellCSS = mkCell('Handgeschriebenes CSS', 'HTML + CSS', cssFrame);
+  const cellTW = mkCell('Tailwind', 'nur HTML · @tailwindcss/browser 4.1.11', twFrame, offline);
+  const cW = seg('tw-w', 'Fensterbreite beider Rahmen', [[375, '375 px (Handy)'], [800, '800 px (ab md)']], () => S.w, v => { S.w = v; update(); }, { plain: true });
+  const ta = h('textarea', { id: 'tw-klassen', spellcheck: 'false', rows: 2, oninput: e => { S.cls = e.target.value.replace(/\s+/g, ' ').trim(); update(); } });
+  ta.value = S.cls;
+  const replaceCls = (re, cls) => { const parts = S.cls.split(/\s+/).filter(c => c && !re.test(c)); parts.push(cls); S.cls = parts.join(' '); ta.value = S.cls; update(); };
+  const tryBtns = [['p-8', /^(md:)?p-\d/], ['rounded-none', /^rounded(-|$)/], ['bg-blue-100', /^bg-/], ['shadow-lg', /^shadow/]].map(t =>
+    h('button', { type: 'button', class: 'btn small', id: 'tw-try-' + slug(t[0]), onclick: () => replaceCls(t[1], t[0]) }, t[0]));
+  const resetBtn = h('button', { type: 'button', class: 'btn small', id: 'tw-reset', onclick: () => { S.cls = DEFAULT_CLS; ta.value = S.cls; update(); } }, 'Zurücksetzen');
+  const edit = h('div', { class: 'tw-edit' }, h('label', { for: 'tw-klassen' }, 'Klassen der äußeren Karte (Tailwind-Seite) – probier es aus:'), ta,
+    h('div', { class: 'tw-try' }, 'Ausprobieren:', tryBtns, resetBtn));
+  const counts = h('dl', { class: 'tw-count', 'aria-live': 'polite' });
+  const table = h('div', { class: 'tw-table-wrap' }, h('table', { class: 'tw-table' },
+    h('thead', null, h('tr', null, h('th', null, 'Klasse'), h('th', null, 'erzeugtes CSS'))),
+    h('tbody', null, [
+      ['p-4', 'padding: 1rem'], ['rounded-xl', 'border-radius: 0.75rem'], ['bg-slate-100', 'background-color: var(--color-slate-100)'],
+      ['flex', 'display: flex'], ['justify-between', 'justify-content: space-between'], ['items-center', 'align-items: center'],
+      ['md:p-6', '@media (width >= 48rem) { padding: 1.5rem }'], ['hover:bg-slate-200', '&:hover { @media (hover: hover) { background-color: var(--color-slate-200) } }']
+    ].map(r => h('tr', null, h('td', null, r[0]), h('td', null, r[1]))))));
+  const cView = seg('tw-view', 'Code anzeigen', [['css', 'Handgeschrieben'], ['tw', 'Tailwind']], () => S.view, v => { S.view = v; update(); }, { plain: true });
+  const code = CodePanel('code-tailwind', 'Code');
+  const stage = h('div', { class: 'stage', id: 'tw-stage' }, h('div', { class: 'tw-grid' }, cellCSS.el, cellTW.el));
+  const exp = explain('<p>Beide Karten sehen gleich aus. Links stehen Klassennamen im HTML und die Regeln in einer CSS-Datei. Rechts beschreibt jede <strong>Utility-Klasse</strong> genau eine Eigenschaft; Tailwind erzeugt das passende CSS selbst. <code>md:</code> ist eine Media Query (ab 48rem = 768 px), <code>hover:</code> ein Zustand. Die Breite der Rahmen bestimmt, ob <code>md:p-6</code> greift.</p>');
+  sec.append(work([h('div', { class: 'controls' }, cW), stage, edit], [h('div', { class: 'controls' }, cView), code.el, counts, table, exp]));
+
+  function postCls() { try { twFrame.contentWindow.postMessage({ id: 'tw-card', cls: S.cls }, '*'); } catch (e) {} }
+  function fit() {
+    [cellCSS, cellTW].forEach(c => {
+      const avail = c.el.clientWidth;
+      if (avail <= 0) return;
+      const s = Math.min(1, avail / S.w);
+      c.frame.style.width = S.w + 'px';
+      c.inner.style.width = S.w + 'px';
+      c.inner.style.transform = 'scale(' + s + ')';
+      c.outer.style.width = S.w * s + 'px';
+      c.outer.style.height = FH * s + 'px';
+    });
+  }
+  const stat = text => {
+    const lines = text.split('\n').filter(l => l.trim()).length;
+    const chars = text.split('\n').map(l => l.trim()).join('').length;
+    return [lines, chars];
+  };
+  window.addEventListener('message', e => {
+    if (e.source !== twFrame.contentWindow || !e.data || !e.data.tw) return;
+    S.tw = e.data.tw;
+    offline.hidden = S.tw === 'ok';
+  });
+  setTimeout(() => { if (S.tw !== 'ok') offline.hidden = false; }, 4000);
+
+  function update() {
+    syncAll([cW, cView]);
+    postCls();
+    const cssText = textOf(cssLines(CSS_RULES));
+    const a = stat(HTML_CSS.join('\n')), b = stat(cssText), c = stat(twHTML(S.cls).join('\n'));
+    counts.innerHTML = '';
+    counts.append(h('dt', null, 'Handgeschrieben'), h('dd', null, a[0] + ' Zeilen HTML + ' + b[0] + ' Zeilen CSS · ' + fmt(a[1] + b[1]) + ' Zeichen'),
+      h('dt', null, 'Tailwind'), h('dd', null, c[0] + ' Zeilen HTML · ' + fmt(c[1]) + ' Zeichen'),
+      h('dd', { style: 'grid-column: 1 / -1; color: var(--muted); font-size: 14px' }, 'Gezählt ohne Einrückung und Leerzeilen.'));
+    if (S.view === 'css') code.set([{ label: 'HTML', lang: 'html', lines: HTML_CSS.map(t => ({ t: t })) }, { label: 'CSS', lang: 'css', lines: cssLines(CSS_RULES) }]);
+    else code.set([{ label: 'HTML (kein eigenes CSS)', lang: 'html', lines: twHTML(S.cls).map(t => ({ t: t })) }]);
+    fit();
+  }
+  return { update: update, onShow: update, onResize: fit };
+}
+
+/* ======================================================================
+   Tabs, Routing, Tastatur, Farbschema
+   ====================================================================== */
+const TABS = [
+  { id: 'flexgrid', name: 'Flex oder Grid', build: tabFlexGrid },
+  { id: 'flex1', name: 'flex: 1', build: tabFlex1 },
+  { id: 'zentrieren', name: 'Zentrieren', build: tabZentrieren },
+  { id: 'grid', name: 'fr & Areas', build: tabGrid },
+  { id: 'responsive', name: 'Responsive', build: tabResponsive },
+  { id: 'dvh', name: '100dvh', build: tabDvh },
+  { id: 'variablen', name: 'Variablen', build: tabVariablen },
+  { id: 'tailwind', name: 'Tailwind vs. CSS', build: tabTailwind }
+];
+const tabsEl = document.getElementById('tabs'), panelsEl = document.getElementById('panels');
+let current = null;
+TABS.forEach((t, i) => {
+  t.btn = h('button', { type: 'button', class: 'tab', role: 'tab', id: 't-' + t.id, 'aria-controls': 'p-' + t.id, 'aria-selected': 'false', tabindex: '-1', onclick: () => show(t.id, false) },
+    h('span', { class: 'nr' }, String(i + 1)), t.name);
+  tabsEl.append(t.btn);
+  t.sec = h('section', { class: 'panel', role: 'tabpanel', id: 'p-' + t.id, 'aria-labelledby': 't-' + t.id, hidden: true }, h('h2', { class: 'sr-only' }, t.name));
+  panelsEl.append(t.sec);
+  try { t.api = t.build(t.sec); } catch (err) { t.sec.append(h('p', { class: 'warn' }, 'Fehler in diesem Tab: ' + err.message)); console.error(err); }
+});
+function show(id, focus) {
+  const t = TABS.find(x => x.id === id) || TABS[0];
+  TABS.forEach(x => {
+    const on = x === t;
+    x.btn.setAttribute('aria-selected', String(on));
+    x.btn.tabIndex = on ? 0 : -1;
+    x.sec.hidden = !on;
+  });
+  current = t;
+  if (focus) t.btn.focus();
+  t.btn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  try { if (location.hash !== '#' + t.id) history.replaceState(null, '', '#' + t.id); }
+  catch (e) { try { location.hash = t.id; } catch (e2) {} }
+  if (t.api && t.api.onShow) t.api.onShow();
+}
+function step(d) {
+  const i = TABS.indexOf(current);
+  show(TABS[(i + d + TABS.length) % TABS.length].id, document.activeElement && document.activeElement.classList.contains('tab'));
+}
+document.addEventListener('keydown', e => {
+  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  const a = document.activeElement;
+  if (a && (a.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))) return;
+  e.preventDefault();
+  step(e.key === 'ArrowRight' ? 1 : -1);
+});
+window.addEventListener('hashchange', () => {
+  const id = location.hash.slice(1);
+  if (current && id && id !== current.id && TABS.some(t => t.id === id)) show(id, false);
+});
+let rz = 0;
+window.addEventListener('resize', () => {
+  cancelAnimationFrame(rz);
+  rz = requestAnimationFrame(() => { if (current && current.api && current.api.onResize) current.api.onResize(); });
+});
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (current && current.api && current.api.onResize) current.api.onResize(); });
+
+/* Farbschema: System → Hell → Dunkel */
+const themeBtn = document.getElementById('theme-btn');
+const MODES = [['system', 'Schema: System'], ['light', 'Schema: Hell'], ['dark', 'Schema: Dunkel']];
+let mode = 0;
+const curAttr = document.documentElement.getAttribute('data-theme');
+if (curAttr === 'light') mode = 1; else if (curAttr === 'dark') mode = 2;
+function applyMode() {
+  const m = MODES[mode][0];
+  if (m === 'system') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', m);
+  themeBtn.textContent = MODES[mode][1];
+}
+themeBtn.textContent = MODES[mode][1];
+themeBtn.addEventListener('click', () => { mode = (mode + 1) % MODES.length; applyMode(); });
+
+const start = location.hash.slice(1);
+show(TABS.some(t => t.id === start) ? start : 'flexgrid', false);
+})();
+</script>
+</body>
+</html>
