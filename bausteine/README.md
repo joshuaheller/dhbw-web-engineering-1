@@ -16,7 +16,7 @@ Jede README hier hat denselben Aufbau:
 | 1 | `t1-erste-seite` |
 | 2 | `t2-semantisches-geruest`, `t2-formular`, `t2-barrierefreiheit` |
 | 3 | `t3-kaskade-und-spezifitaet`, `t3-box-modell`, `t3-sticky-header-badge` |
-| 4 | `t4-flexbox-grid`, `t4-responsive-karten`, `t4-tailwind-cdn`, `t4-vite-tailwind` |
+| 4 | `t4-flexbox-grid`, `t4-responsive-karten`, `t4-tailwind-cdn`, `t4-vite-tailwind`, `t4-layout-spielwiese` |
 | 5 | `t5-pfade-und-fallen`, `t5-mini-server` |
 | 6 | `t6-dom-und-events`, `t6-zustand-und-render`, `t6-fehlersuche` |
 | 7 | `t7-fetch-zustaende`, `t7-api-spielwiese`, `t7-bibliothek-chartjs` |
