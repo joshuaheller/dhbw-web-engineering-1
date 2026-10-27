@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wetter über die eigene Function</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 32rem; margin: 3rem auto; padding: 0 1rem; line-height: 1.5; }
+    select, button { font: inherit; padding: .4rem .8rem; }
+    #ausgabe { margin-top: 1.5rem; padding: 1rem; border-radius: .5rem; background: #f1f5f9; }
+    .fehler { background: #fee2e2 !important; }
+    code { background: #e2e8f0; padding: 0 .3rem; border-radius: .25rem; }
+  </style>
+</head>
+<body>
+  <h1>Wetter</h1>
+  <p>Diese Seite fragt <strong>nicht</strong> die Wetter-API, sondern <code>/api/wetter</code> – eure eigene Function auf derselben Domain.</p>
+
+  <label for="stadt">Stadt</label>
+  <select id="stadt">
+    <option value="karlsruhe">Karlsruhe</option>
+    <option value="berlin">Berlin</option>
+    <option value="hamburg">Hamburg</option>
+    <option value="muenchen">München</option>
+    <option value="paris">Paris (gibt es nicht)</option>
+  </select>
+  <button id="laden">Laden</button>
+
+  <div id="ausgabe">Noch nichts geladen.</div>
+
+  <script type="module">
+    const ausgabe = document.querySelector("#ausgabe");
+
+    async function lade() {
+      const stadt = document.querySelector("#stadt").value;
+      ausgabe.className = "";
+      ausgabe.textContent = "Lädt …";
+
+      try {
+        // gleiche Domain → kein CORS, kein Key im Browser
+        const res = await fetch(`/api/wetter?stadt=${stadt}`);
+        const daten = await res.json();
+        if (!res.ok) throw new Error(daten.fehler);
+        ausgabe.textContent = `${daten.temperatur} °C, Wind ${daten.wind} km/h (Stand ${daten.zeit.slice(11)} Uhr)`;
+      } catch (fehler) {
+        ausgabe.className = "fehler";
+        ausgabe.textContent = `Fehler: ${fehler.message}`;
+      }
+    }
+
+    document.querySelector("#laden").addEventListener("click", lade);
+  </script>
+</body>
+</html>

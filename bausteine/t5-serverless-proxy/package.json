@@ -1,0 +1,5 @@
+{
+  "name": "t5-serverless-proxy",
+  "private": true,
+  "type": "module"
+}
