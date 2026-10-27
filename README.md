@@ -63,4 +63,4 @@ Die Folien kommen nach jedem Termin als PDF in [`folien/`](folien) dazu.
 - Daten aus einer öffentlichen API, Fehlerfall sichtbar
 - Deployed unter öffentlicher URL, mit selbst geschriebener README
 
-Bonus gibt es für ein Three.js-Element, eine Komponentenbibliothek, einen eigenen kleinen Node-Server, Tests, einen sauberen Build mit Vite – oder eine eigene Idee, die ihr begründen könnt.
+Bonus gibt es für ein Three.js-Element, eine Komponentenbibliothek, einen eigenen kleinen Server (lokal mit Node oder online als Serverless Function auf Vercel, Netlify oder Cloudflare), Tests, einen sauberen Build mit Vite – oder eine eigene Idee, die ihr begründen könnt.
