@@ -23,10 +23,10 @@ Jeder Termin bringt euer Projekt einen Schritt weiter. Die Übungsblätter sind 
 | 3 | 13.10. | CSS Grundlagen | [Folien 3](folien/WE1_Termin03_CSS.pdf) | [Blatt 3](blaetter/pdf/WE1_Blatt03_Eigenes-CSS.pdf) | Eigenes Stylesheet: Farben, Schrift, Abstände, sticky Header |
 | 4 | 20.10. | Layout, Tailwind & npm | [Folien 4](folien/WE1_Termin04_Layout-Tailwind.pdf) | [Blatt 4](blaetter/pdf/WE1_Blatt04_Layout-Tailwind-und-die-Toolchain.pdf) | Responsives Layout, drei wiederverwendete Komponenten |
 | 5 | 27.10. | Client, Server & HTTP | [Folien 5](folien/WE1_Termin05_Client-Server-HTTP.pdf) | [Blatt 5](blaetter/pdf/WE1_Blatt05_Online-gehen.pdf) | Läuft live unter einer öffentlichen URL |
-| 6 | 17.11. | JavaScript im Browser | folgt | [Blatt 6](blaetter/pdf/WE1_Blatt06_Interaktiv-werden.pdf) | Reagiert auf Eingaben, ohne die Seite neu zu laden |
-| 7 | 24.11. | Daten & APIs | folgt | [Blatt 7](blaetter/pdf/WE1_Blatt07_Echte-Daten.pdf) | Holt echte Daten aus einer API, inklusive Fehlerfall |
-| 8 | 01.12. | Arbeitsalltag mit Agents | folgt | [Blatt 8](blaetter/pdf/WE1_Blatt08_Feinschliff-und-Abgabe.pdf) | Ist abgabefertig: README, KI-Log, saubere Historie |
-| 9 | 08.12. | Präsentationen & Abschluss | folgt | – | wird vorgeführt |
+| 6 | 17.11. | JavaScript & Sicherheit | folgt | [Blatt 6](blaetter/pdf/WE1_Blatt06_Interaktiv-werden.pdf) | Reagiert auf Eingaben, ohne die Seite neu zu laden – und hat einen Sicherheits-Check hinter sich |
+| 7 | 24.11. | Daten & APIs | folgt | [Blatt 7](blaetter/pdf/WE1_Blatt07_Echte-Daten.pdf), [Blatt 8](blaetter/pdf/WE1_Blatt08_Feinschliff-und-Abgabe.pdf) | Holt echte Daten aus einer API, inklusive Fehlerfall – und ist abgabefertig |
+| 8 | 01.12. | Präsentationen | – | – | wird vorgeführt: 7 Minuten Demo, 3 Minuten Rückfragen |
+| 9 | 08.12. | Klausurvorbereitung & Abschluss | folgt | – | Alle Themen im Überblick, Probeaufgaben, Puffer für Präsentationen |
 
 Die Blätter liegen als PDF in [`blaetter/pdf/`](blaetter/pdf) – das ist die Fassung, mit der ihr arbeitet.
 Die Folien kommen nach jedem Termin als PDF in [`folien/`](folien) dazu.
@@ -50,9 +50,10 @@ Die Folien kommen nach jedem Termin als PDF in [`folien/`](folien) dazu.
 | Wann | Was |
 | --- | --- |
 | So, 04.10., 20:00 | Team und Projektidee per Mail an dhbw@theaisoftwarecompany.com |
-| So, 06.12., 20:00 | Abgabe: Repo-Link und Live-URL per Mail |
-| Di, 08.12. | Präsentationen: 7 Minuten Demo, 3 Minuten Fragen |
-| Klausurphase | Klausur über die DHBW, Stoff aus den Terminen 1 bis 7 |
+| So, 29.11., 20:00 | Abgabe: Repo-Link und Live-URL per Mail |
+| Di, 01.12. | Präsentationen aller Teams: 7 Minuten Demo, 3 Minuten Fragen, Reihenfolge wird gelost |
+| Di, 08.12. | Klausurvorbereitung: alle Themen, Probeaufgaben |
+| Klausurphase | Klausur über die DHBW, Stoff aus den Terminen 1 bis 7 – der genaue Termin folgt |
 
 ## Euer Projekt: die Mindestanforderungen
 
