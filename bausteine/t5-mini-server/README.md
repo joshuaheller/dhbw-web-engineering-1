@@ -22,6 +22,8 @@ Optional. Ihr braucht keinen eigenen Server für die Pflichtanforderungen – Gi
 
 Interessant wird er, wenn eine API einen **geheimen Key** verlangt: den dürft ihr nicht ins Frontend legen. Dann steht so ein Server davor, hält den Key und reicht die Anfrage weiter. Das ist eine der Bonusaufgaben.
 
+Auf GitHub Pages läuft `server.js` **nicht** – dort werden nur Dateien ausgeliefert. Dieser Baustein ist zum Verstehen auf dem eigenen Rechner. Wer so etwas online braucht, nimmt eine Serverless Function: siehe [`t5-serverless-proxy`](../t5-serverless-proxy).
+
 ## Änder mich
 
 1. Ruft <http://localhost:3000/gibtsnicht> auf. Welchen Statuscode seht ihr im Network-Panel, und wo im Code wird er gesetzt?
