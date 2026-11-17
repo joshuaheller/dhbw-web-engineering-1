@@ -23,7 +23,7 @@ Jeder Termin bringt euer Projekt einen Schritt weiter. Die Übungsblätter sind 
 | 3 | 13.10. | CSS Grundlagen | [Folien 3](folien/WE1_Termin03_CSS.pdf) | [Blatt 3](blaetter/pdf/WE1_Blatt03_Eigenes-CSS.pdf) | Eigenes Stylesheet: Farben, Schrift, Abstände, sticky Header |
 | 4 | 20.10. | Layout, Tailwind & npm | [Folien 4](folien/WE1_Termin04_Layout-Tailwind.pdf) | [Blatt 4](blaetter/pdf/WE1_Blatt04_Layout-Tailwind-und-die-Toolchain.pdf) | Responsives Layout, drei wiederverwendete Komponenten |
 | 5 | 27.10. | Client, Server & HTTP | [Folien 5](folien/WE1_Termin05_Client-Server-HTTP.pdf) | [Blatt 5](blaetter/pdf/WE1_Blatt05_Online-gehen.pdf) | Läuft live unter einer öffentlichen URL |
-| 6 | 17.11. | JavaScript & Sicherheit | folgt | [Blatt 6](blaetter/pdf/WE1_Blatt06_Interaktiv-werden.pdf) | Reagiert auf Eingaben, ohne die Seite neu zu laden – und hat einen Sicherheits-Check hinter sich |
+| 6 | 17.11. | JavaScript & Sicherheit | [Folien 6](folien/WE1_Termin06_JavaScript-Sicherheit.pdf) | [Blatt 6](blaetter/pdf/WE1_Blatt06_Interaktiv-werden.pdf) | Reagiert auf Eingaben, ohne die Seite neu zu laden – und hat einen Sicherheits-Check hinter sich |
 | 7 | 24.11. | Daten & APIs | folgt | [Blatt 7](blaetter/pdf/WE1_Blatt07_Echte-Daten.pdf), [Blatt 8](blaetter/pdf/WE1_Blatt08_Feinschliff-und-Abgabe.pdf) | Holt echte Daten aus einer API, inklusive Fehlerfall – und ist abgabefertig |
 | 8 | 01.12. | Präsentationen | – | – | wird vorgeführt: 7 Minuten Demo, 3 Minuten Rückfragen |
 | 9 | 08.12. | Klausurvorbereitung & Abschluss | folgt | – | Alle Themen im Überblick, Probeaufgaben, Puffer für Präsentationen |
